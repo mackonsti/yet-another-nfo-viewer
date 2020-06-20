@@ -10,12 +10,12 @@ Therefore, due to my current Mac environment at that time, this tool is intended
 </br>
 The included (and necessary) resource **ProFontWindows** is an original bitmap font created by Tobias Jung and then kindly converted to Windows TrueType format by Mike Smith. This font was also used in *NFO Viewer* by Kris Gybels, which is the most convenient free font for ASCII art found and available, so far.</br>
 </br>
-For historical reasons, the very first release posted here will be the original, compiled version from 2011, same as the one found on [MacUpdate](https://www.macupdate.com/app/mac/39748/yet-another-nfo-viewer) that was submitted quite some time ago.
+For historical reasons, the very first release posted here will be a re-compiled version from 2011, slightly newer to the one found on [MacUpdate](https://www.macupdate.com/app/mac/39748/yet-another-nfo-viewer) that was submitted quite some time ago.
 
 ## Current Status
 
 Recently, I decided to create this repository and share the code to anyone interested into improving it and migrating the code so it can be compiled to modern Xcode versions, as since Xcode 4 a lot has changed and I have not been personally able to follow the developments.</br>
 </br>
-If you are interested to contribute to this simple tool, feel free to request permission to access the repository.</br>
+If you are interested to contribute to this simple tool, feel free to request permission to access the repository. The only thing I have done is to open the project in Xcode 9 and compile it without errors or warnings, while including minor modern optimisations.</br>
 </br>
 For issues found or new features, the best way forward is to use the appropriate section, here on GitHub. Please be concise, polite and provide enough information if a bug is found. Also, kindly use the **formatting** options for copying-pasting code or logs.
