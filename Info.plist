@@ -44,7 +44,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Code is copyright �2011-2012 by MacKonsti. All rights reserved.</string>
+	<string>Code is copyright ©2011-2012 by MacKonsti. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
