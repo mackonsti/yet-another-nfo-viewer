@@ -4,13 +4,13 @@
 
 Back in 2011, the **Yet Another NFO Viewer** or simply *YaNvi* project was intended to be a small, light and hopefully fast tool to properly view ASCII artwork files in DOS encoding (with extensions NFO, ASC and DIZ) that I created for myself and felt like sharing with the Mac community, as using the native **TextEdit.app** was simply not good enough, since it doesn't always auto-detect the encoding and the user is forced to set it manually.</br>
 </br>
-It was originally planned to be a continuation/update on the **NFO Viewer** project by Kris Gybels and his open-source code repository over at SourceForge.net for modern, larger desktop resolutions. As this original project looked like it was compiled on an older Xcode and Mac OS X setup, I was forced to completely re-write it from scratch on Mac OS X 10.6 using Xcode 3.2 so that I would be able to also produce a 64-bit binary.</br>
+It was originally planned to be a continuation/update on the **NFO Viewer** project by Kris Gybels and [his open-source code repository over at SourceForge.net](http://blockart.sourceforge.net/) for modern, larger desktop resolutions. As this original project looked like it was compiled on an older Xcode and Mac OS X setup, I was forced to completely re-write it from scratch on Mac OS X 10.6 using Xcode 3.2 so that I would be able to also produce a 64-bit binary.</br>
 </br>
 Therefore, due to my current Mac environment at that time, this tool is intended for Intel-based Macs only, running on the Mac OS X 10.6 operating system.</br>
 </br>
 The included (and necessary) resource **ProFontWindows** is an original bitmap font created by Tobias Jung and then kindly converted to Windows TrueType format by Mike Smith. This font was also used in *NFO Viewer* by Kris Gybels, which is the most convenient free font for ASCII art found and available, so far.</br>
 </br>
-For historical reasons, the very first release posted here will be the original DMG from 2011, same as the one found on MacUpdate that was submitted quite some time ago.
+For historical reasons, the very first release posted here will be the original, compiled version from 2011, same as the one found on [MacUpdate](https://www.macupdate.com/app/mac/39748/yet-another-nfo-viewer) that was submitted quite some time ago.
 
 ## Current Status
 
