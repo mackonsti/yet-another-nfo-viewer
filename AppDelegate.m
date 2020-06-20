@@ -34,7 +34,7 @@
 	[nfoOpenPanel setResolvesAliases:YES];
 	[nfoOpenPanel setMessage:NSLocalizedString(@"OPEN_SELECT_FILE", nil)];
 
-	if ([nfoOpenPanel runModal] == NSFileHandlingPanelOKButton)
+	if ([nfoOpenPanel runModal] == NSModalResponseOK)
 	{
 		// Add file to "Open Recent" menu item
 		[[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:[nfoOpenPanel URL]];
@@ -75,7 +75,7 @@
 	myLog(@"Imported %@", nfoURL);
 
 	// Set the default font and size
-	NSFont *nfoFont = [NSFont fontWithName:@"ProFontWindows" size:16.0];
+	NSFont *nfoFont = [NSFont fontWithName:@"More Perfect DOS VGA" size:16.0];
 
 	// Remove trailing CR/LF
 	if ([nfoContents hasSuffix:@"\n"] == YES)
@@ -84,7 +84,7 @@
 		myLog(@"Removed trailing CR/LF");
 	}
 
-	// First prepare text contents
+	// Prepare UI contents
 	[nfoTextView setFont:nfoFont];
 	[nfoTextView selectAll:self];
 	[nfoTextView replaceCharactersInRange:[nfoTextView selectedRange] withString:nfoContents];
@@ -92,23 +92,28 @@
 	// Instead of using:
 	// [nfoTextView setString:nfoContents];
 
-	// We do not want text wrapped
+	// We do not want text contents wrapped
 	[nfoTextView setHorizontallyResizable:YES];
 	[nfoTextView setVerticallyResizable:YES];
 	[nfoTextView setAutoresizingMask:NSViewNotSizable];
 
 	[nfoTextView setBackgroundColor:[NSColor whiteColor]];
 	[nfoTextView setTextColor:[NSColor blackColor]];
-	[nfoTextView display];
+	// [nfoTextView display];
 
 	// Finally calculate the window size for specific font size
 	[self sizeForStringDrawingApple:nfoContents withFont:nfoFont];
-	// Window is also shown by calling the Method above
+	// Window is *not* yet shown by calling the Method above
 
-	// Set final window details AFTER sizing window
+	// Set final window properties AFTER sizing window
 	[nfoWindow center];
-	[nfoWindow setShowsResizeIndicator:YES];
+	[nfoWindow setShowsResizeIndicator:NO];
 	[nfoWindow setTitle:[[nfoURL path] lastPathComponent]];
+	[nfoWindow setPreservesContentDuringLiveResize:YES];
+
+	[[nfoWindow standardWindowButton:NSWindowCloseButton] setHidden:NO];
+	[[nfoWindow standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
+	[[nfoWindow standardWindowButton:NSWindowZoomButton] setHidden:YES];
 
 	// We can now show the window and FORCE redrawing
 	[nfoWindow makeKeyAndOrderFront:self];
@@ -120,6 +125,7 @@
 -(void)sizeForStringDrawingApple: (NSString *)aString withFont:(NSFont *)aFont
 {
 	// Tip found at: http://www.cocoabuilder.com/archive/cocoa/153626-text-height-for-printing-fixed-width.html
+	// Apple archive: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/TextLayout/Tasks/DrawingStrings.html
 	//
 	NSTextStorage *textStorage = [[[NSTextStorage alloc] initWithString:aString] autorelease];
 	NSTextContainer *textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)] autorelease];
@@ -140,14 +146,14 @@
 	// Taken from: http://stackoverflow.com/questions/4982656/programmatically-get-screen-size-in-mac-os-x
 	//
 	NSRect visibleScreen = [[NSScreen mainScreen] visibleFrame];
-	myLog(@"Available visible dimensions: %.0fx%.0f", visibleScreen.size.width, visibleScreen.size.height);
+	myLog(@"Available visible dimensions: %.0f x %.0f", visibleScreen.size.width, visibleScreen.size.height);
 
 	// Check display sizes accordingly
 	NSRect nfoFrameSize; nfoFrameSize.origin.x = 0; nfoFrameSize.origin.y = 0;
 
 	if (myWidth < visibleScreen.size.width)
 	{
-		nfoFrameSize.size.width = (myWidth + 10);  // Compensate for vertical scroll-bar
+		nfoFrameSize.size.width = (myWidth + 10);  // Compensate horizontally for vertical scroll-bar
 	} else {
 		nfoFrameSize.size.width = (visibleScreen.size.width - kHorizontalWindowPadding);
 	}
@@ -158,54 +164,14 @@
 		nfoFrameSize.size.height = (visibleScreen.size.height - kVerticalWindowPadding);
 	}
 
-	[nfoWindow setFrame:nfoFrameSize display:YES];
+	[nfoWindow setFrame:nfoFrameSize display:NO];
 	[nfoWindow setMinSize:NSMakeSize(nfoFrameSize.size.width, (nfoFrameSize.size.height / 2))];
-	// Users don't like this
-	//
-	// [nfoWindow setMaxSize:NSMakeSize(nfoFrameSize.size.width, FLT_MAX)];
+
+	// Some users may not like this...
+	[nfoWindow setMaxSize:NSMakeSize(nfoFrameSize.size.width, FLT_MAX)];
+
+	myLog(@"Final frame dimensions: %.0f x %.0f", nfoFrameSize.size.width, nfoFrameSize.size.height);
 	return;
-}
-
-
--(BOOL)loadFontFromResource: (NSString *)fontname
-{
-	// Taken from: http://www.cocoadev.com/index.pl?UsingCustomFontsInYourCocoaApplications
-	//
-	NSString *fontsFolder;
-
-	if ((fontsFolder = [[NSBundle mainBundle] resourcePath]))
-	{
-		NSURL *fontsURL;
-
-		if ((fontsURL = [NSURL fileURLWithPath:fontsFolder]))
-		{
-			OSStatus status;
-			FSRef fsRef;
-
-			(void)CFURLGetFSRef((CFURLRef)fontsURL, &fsRef);
-			status = ATSFontActivateFromFileReference(&fsRef, kATSFontContextLocal, kATSFontFormatUnspecified, NULL, kATSOptionFlagsDefault, NULL);
-
-			if (status != noErr)
-			{
-				myLog(@"Failed to activate font from resource!");
-				return NO;
-			}
-		}
-	}
-
-	if (fontname != nil)
-	{
-		NSFontManager *fontManager = [NSFontManager sharedFontManager];
-		BOOL fontFound = [[fontManager availableFonts] containsObject:fontname];
-
-		if (!fontFound)
-		{
-			myLog(@"Required font not found: %@", fontname);
-			return NO;
-		}
-	}
-
-	return YES;
 }
 
 
@@ -227,9 +193,6 @@
 
 	// Initialize main variable(s)
 	hasDroppedFile = NO;
-
-	// Load font from resource
-	[self loadFontFromResource:@"ProFontWindows"];
 }
 
 
@@ -315,12 +278,12 @@
 //	}
 
 
-//	-(BOOL)applicationShouldTerminateAfterLastWindowClosed: (NSApplication *)theApplication
-//	{
-//		myLog(@"Application should terminate after last window closed");
-//		[NSApp terminate:self];
-//		return YES;
-//	}
+-(BOOL)applicationShouldTerminateAfterLastWindowClosed: (NSApplication *)theApplication
+{
+	myLog(@"Application should terminate after last window closed");
+	[NSApp terminate:self];
+	return YES;
+}
 
 
 -(void)dealloc

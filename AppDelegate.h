@@ -20,7 +20,6 @@
 
 -(void)showNFOContentsWindow:(NSURL *)nfoURL;
 -(void)sizeForStringDrawingApple:(NSString *)aString withFont:(NSFont *)aFont;
--(BOOL)loadFontFromResource:(NSString *)fontname;
 
 @property (assign) IBOutlet NSWindow *nfoWindow;
 @property (assign) IBOutlet NSTextView *nfoTextView;
