@@ -47,6 +47,9 @@
 		FA38B25327D2CF8D00397B5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FA38B25427D2CF8D00397B5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA38B25627D2CF9400397B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FA38B25727D2D50300397B5D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA38B25927D2D77B00397B5D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		FA38B25B27D2D78300397B5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +224,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				FA38B25627D2CF9400397B5D /* Base */,
+				FA38B25927D2D77B00397B5D /* fr */,
+				FA38B25B27D2D78300397B5D /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FA38B25427D2CF8D00397B5D /* en */,
+				FA38B25727D2D50300397B5D /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 				GCC_PREFIX_HEADER = "Yet Another NFO Viewer_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YetAnotherNFOViewer;
 				PRODUCT_NAME = "Yet Another NFO Viewer";
 			};
@@ -267,6 +274,7 @@
 				GCC_PREFIX_HEADER = "Yet Another NFO Viewer_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YetAnotherNFOViewer;
 				PRODUCT_NAME = "Yet Another NFO Viewer";
 			};
