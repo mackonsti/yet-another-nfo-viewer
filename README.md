@@ -16,7 +16,7 @@ For historical reasons, the very first release posted here will be a re-compiled
 
 For issues found or new features, the best way forward is to use [the appropriate section here](https://github.com/mackonsti/yet-another-nfo-viewer/issues) on GitHub. Please be concise, polite and provide enough information if a bug is found. Also, kindly use the formatting options for copying-pasting code or logs.
 
-Should you wish to contribute, you are very welcome to do via a [Pull Request](https://github.com/mackonsti/yet-another-nfo-viewer/pulls) that I'd be happy to approve.
+Should you wish to contribute, you are very welcome to do so via a [Pull Request](https://github.com/mackonsti/yet-another-nfo-viewer/pulls) that I'd be happy to approve.
 
 ### Release 1.1.2
 
