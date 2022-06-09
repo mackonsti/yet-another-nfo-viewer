@@ -18,6 +18,10 @@ For issues found or new features, the best way forward is to use [the appropriat
 
 Should you wish to contribute, you are very welcome to do so via a [Pull Request](https://github.com/mackonsti/yet-another-nfo-viewer/pulls) that I'd be happy to approve.
 
+### Release 1.1.3
+
+This release is a minor release but important for some people, especially because longer ASCII art files can now be read in their entirety and scrolled all the way to the bottom of the file; previously, there was a vertical limit that has been now increased.
+
 ### Release 1.1.2
 
 Thanks to the community support, this tool can now be run on both **Intel** and **Apple Silicon** platforms (as a Universal Binary) running at least macOS High Sierra (10.13) operating system. French strings translations were also added.
