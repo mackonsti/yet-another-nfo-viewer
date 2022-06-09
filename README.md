@@ -20,7 +20,7 @@ Should you wish to contribute, you are very welcome to do so via a [Pull Request
 
 ### Release 1.1.3
 
-This release is a minor release but important for some people, especially because longer ASCII art files can now be read in their entirety and scrolled all the way to the bottom of the file; previously, there was a vertical limit that has been now increased.
+This release is a minor release but important for some people, especially because **longer ASCII art files** can now be read in their entirety and scrolled all the way to the bottom of the file; previously, there was a vertical limit that has been now increased.
 
 ### Release 1.1.2
 
