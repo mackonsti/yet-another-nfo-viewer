@@ -2,21 +2,38 @@
 
 ## Overview
 
-Back in 2011, the **Yet Another NFO Viewer** or simply *YaNvi* project was intended to be a small, light and hopefully fast tool to properly view ASCII artwork files in DOS encoding (with extensions NFO, ASC and DIZ) that I created for myself and felt like sharing with the Mac community, as using the native **TextEdit.app** was simply not good enough, since it doesn't always auto-detect the encoding and the user is forced to set it manually.
+Back in 2011, the **Yet Another NFO Viewer** or simply _YaNvi_ project was intended to be a small, light and hopefully fast tool to properly view ASCII artwork files in DOS encoding (with extensions NFO, ASC and DIZ) that I created for myself and felt like sharing with the Mac community, as using the native **TextEdit.app** was simply not good enough, since it doesn't always auto-detect the encoding and the user is forced to set it manually.
 
 It was originally planned to be a continuation/update on the **NFO Viewer** project by Kris Gybels and [his open-source code repository over at SourceForge.net](http://blockart.sourceforge.net/) for modern, larger desktop resolutions. As this original project looked like it was compiled on an older Xcode and Mac OS X setup, I was forced to completely re-write it from scratch on Mac OS X 10.6 using Xcode 3.2 so that I would be able to also produce a 64-bit binary.
 
-Therefore, due to my current Mac environment at that time, this tool is intended for Intel-based Macs only, running on the Mac OS X 10.6 operating system.</br>
+Therefore, due to my current Mac environment at that time, this tool was intended for Intel-based Macs only, running on the Mac OS X 10.6 operating system.
 
-The included (and necessary) resource **ProFontWindows** is an original bitmap font created by Tobias Jung and then kindly converted to Windows TrueType format by Mike Smith. This font was also used in *NFO Viewer* by Kris Gybels, which is the most convenient free font for ASCII art found and available, so far.</br>
+The included (and necessary) resource **ProFontWindows** is an original bitmap font created by Tobias Jung and then kindly converted to Windows TrueType format by Mike Smith. This font was also used in *NFO Viewer* by Kris Gybels, which is the most convenient free font for ASCII art found and available, so far.
 
 For historical reasons, the very first release posted here will be a re-compiled version from 2011, slightly newer to the one found on [MacUpdate](https://www.macupdate.com/app/mac/39748/yet-another-nfo-viewer) that was submitted quite some time ago.
 
 ## Current Status
 
-For issues found or new features, the best way forward is to use [the appropriate section here](https://github.com/mackonsti/yet-another-nfo-viewer/issues) on GitHub. Please be concise, polite and provide enough information if a bug is found. Also, kindly use the formatting options for copying-pasting code or logs.
+For operational issues found, the best way forward is to use [the appropriate section here](https://github.com/mackonsti/yet-another-nfo-viewer/issues) on GitHub. Please be concise, polite and provide enough information if a bug is found. Also, kindly use the formatting options for copying-pasting code or logs.
+
+For new features, you are welcome to post them as well, however they can _only_ rely on the kind contribution of the involved community members, as there is no development roadmap.
 
 Should you wish to contribute, you are very welcome to do so via a [Pull Request](https://github.com/mackonsti/yet-another-nfo-viewer/pulls) that I'd be happy to approve.
+
+## Installation Note
+
+Due to stricter security measures enforced on latest macOS versions, despite the fact that the provided DMG file in [Releases](https://github.com/mackonsti/yet-another-nfo-viewer/releases) has been checked prior to it being published, there may be situations where macOS will inform you that "_the application is damaged and can't be opened_" and that "_you should move it to the Trash_" when trying to run **YaNvi** for the first time.
+
+In the past, right-clicking on the application icon and selecting "Open" on the mini-menu [would bypass this error](https://osxdaily.com/2019/02/13/fix-app-damaged-cant-be-opened-trash-error-mac/), as it would indicate to macOS that you are consciously trying to open a third-party, non-signed or notarized application.
+
+Recently, users reported to successfully bypass this issue by **cleaning up any extended attributes** that macOS assigns when e.g. installing it in `/Applications/` folder. Try this in your Terminal console _before_ launching **YaNvi** for the first time:
+
+```
+cd /Applications/
+xattr -rc Yet\ Another\ NFO\ Viewer.app
+```
+
+You can find more information on `xattr` command [here](https://ss64.com/osx/xattr.html).
 
 ### Release 1.1.3
 
