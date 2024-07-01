@@ -14,9 +14,11 @@ For historical reasons, the very first release posted here will be a re-compiled
 
 ## Current Status
 
-For operational issues found, the best way forward is to use [the appropriate section here](https://github.com/mackonsti/yet-another-nfo-viewer/issues) on GitHub. Please be concise, polite and provide enough information if a bug is found. Also, kindly use the formatting options for copying-pasting code or logs.
+⚠️ **Although this tool is not _abandonware_, it runs extremely low on resources and depends on the good will and time of contributors.** This explains the very few releases over time, especially due to the fact that peopple moved ahead to Swift and Swift UI, while this is an original Xcode 4.x project. Therfore this tool **may not work for you** and your macOS setup, especially recent ones.
 
-For new features, you are welcome to post them as well, however they can _only_ rely on the kind contribution of the involved community members, as there is no development roadmap.
+Nevertheless, for operational issues found, you can try posting a bug by using [the appropriate section here](https://github.com/mackonsti/yet-another-nfo-viewer/issues) on GitHub. Please be concise, polite and **provide enough information (macOS, architecture, sample NFO and details on reproducing the bug)** if an issue is constantly encountered. Also, kindly use the formatting options for copying-pasting code or logs.
+
+For new features, you are welcome to post them as well, however they can _only_ rely on the kind contribution of the involved community members, as **there is no development roadmap** ahead.
 
 Should you wish to contribute, you are very welcome to do so via a [Pull Request](https://github.com/mackonsti/yet-another-nfo-viewer/pulls) that I'd be happy to approve.
 
