@@ -1,0 +1,5 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "Yet Another NFO Viewer";
+CFBundleGetInfoString = "Copyright ©2011-2022 MacKonsti. All rights reserved.";
+NSHumanReadableCopyright = "Copyright ©2011-2022 MacKonsti. All rights reserved.";

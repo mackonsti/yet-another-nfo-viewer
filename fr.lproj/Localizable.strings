@@ -1,0 +1,4 @@
+/* Localizable.strings */
+
+/* Message Dialog */
+"OPEN_SELECT_FILE" = "Selectionnez le fichier NFO, ASC ou DIZ à visualiser :";
