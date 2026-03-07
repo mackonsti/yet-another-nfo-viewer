@@ -1,10 +1,10 @@
 # Yet Another NFO Viewer
 
-${\textsf{\color{red}As of October 2025, the project is abandoned, following a lack of contributors.}}$
+${\textsf{\color{red}Work here resumes after spending some time with ChatGPT converting old code.}}$
 
-${\textsf{\color{red}There will be no further releases created or published, in the current form.}}$
+${\textsf{\color{red}The project is not fully active but is being kept alive with slow changes.}}$
 
-${\textsf{\color{red}People are welcome to carry the torch in a new, Swift-based version for modern macOS!}}$
+${\textsf{\color{red}Please be patient, as this is a hobby project and my free time is scarce.}}$
 
 ## Overview
 
