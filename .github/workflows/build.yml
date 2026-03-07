@@ -1,0 +1,45 @@
+name: Build YaNVi application
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode.app
+
+    - name: Build
+      run: |
+        xcodebuild \
+          -scheme YaNVi \
+          -configuration Release \
+          -arch x86_64 \
+          -arch arm64 \
+          -derivedDataPath build \
+          clean build
+
+    - name: Archive application
+      run: |
+        mkdir build_artifacts
+        cp -R build/Build/Products/Release/YaNVi.app build_artifacts/
+
+    - name: Compress application
+      run: |
+        cd build_artifacts
+        zip -r YaNVi.zip YaNVi.app
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: YaNVi
+        path: build_artifacts/YaNVi.zip

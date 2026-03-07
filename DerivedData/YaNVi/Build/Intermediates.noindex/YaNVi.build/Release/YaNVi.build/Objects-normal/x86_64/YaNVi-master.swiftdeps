@@ -1,7 +1,0 @@
-version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
-options: "ef7d709f83e7c33a8e6e2af45ef864d87e03a307e3e5f14471b00638ac9dffe0"
-build_start_time: [1772905821, 707951000]
-build_end_time: [1772905828, 685097000]
-inputs:
-  "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/AppDelegate.swift": [1772881202, 0]
-  "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/EscapeWindow.swift": [1772823244, 0]
