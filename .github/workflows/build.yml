@@ -3,8 +3,8 @@ name: Build YaNVi application
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  release:
+    types: [created]
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode.app
 
-    - name: Build
+    - name: Build application
       run: |
         xcodebuild \
           -scheme YaNVi \
@@ -28,18 +28,31 @@ jobs:
           -derivedDataPath build \
           clean build
 
-    - name: Archive application
+    - name: Verify universal binary
+      run: |
+        lipo -info build/Build/Products/Release/YaNVi.app/Contents/MacOS/YaNVi
+
+    - name: Prepare artifacts
       run: |
         mkdir build_artifacts
         cp -R build/Build/Products/Release/YaNVi.app build_artifacts/
 
-    - name: Compress application
+    - name: Create DMG
       run: |
-        cd build_artifacts
-        zip -r YaNVi.zip YaNVi.app
+        hdiutil create \
+          -volname "YaNVi" \
+          -srcfolder build_artifacts/YaNVi.app \
+          -ov -format UDZO \
+          build_artifacts/YaNVi.dmg
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: YaNVi
-        path: build_artifacts/YaNVi.zip
+        path: build_artifacts/YaNVi.dmg
+
+    - name: Upload to release
+      if: github.event_name == 'release'
+      uses: softprops/action-gh-release@v2
+      with:
+        files: build_artifacts/YaNVi.dmg
