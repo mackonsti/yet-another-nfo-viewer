@@ -26,12 +26,22 @@ jobs:
           -derivedDataPath build \
           -destination 'generic/platform=macOS' \
           ARCHS="x86_64 arm64" \
+          VALID_ARCHS="x86_64 arm64" \
           ONLY_ACTIVE_ARCH=NO \
           clean build
 
     - name: Verify universal binary
       run: |
-        lipo -info build/Build/Products/Release/YaNVi.app/Contents/MacOS/YaNVi
+        BIN="build/Build/Products/Release/YaNVi.app/Contents/MacOS/YaNVi"
+        echo "Binary info:"
+        lipo -info "$BIN"
+        ARCHS=$(lipo -info "$BIN")
+        if [[ "$ARCHS" != *"x86_64"* ]] || [[ "$ARCHS" != *"arm64"* ]]; then
+            echo "ERROR: Binary is not universal (x86_64 + arm64 required)"
+            exit 1
+        fi
+        echo "Mach-O details verified:"
+        file "$BIN"
 
     - name: Prepare artifacts
       run: |
@@ -41,20 +51,22 @@ jobs:
     - name: Create DMG
       run: |
         VERSION=${GITHUB_REF_NAME#v}
+        DMG_NAME="YaNVi-${VERSION}-universal.dmg"
+        echo "Creating DMG: $DMG_NAME"
         hdiutil create \
           -volname "YaNVi" \
           -srcfolder build_artifacts/YaNVi.app \
           -ov -format UDZO \
-          build_artifacts/YaNVi_${VERSION}.dmg
+          "build_artifacts/$DMG_NAME"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: YaNVi
-        path: build_artifacts/YaNVi_*.dmg
+        path: build_artifacts/${{ env.DMG_NAME }}
 
     - name: Upload to release
       if: github.event_name == 'release'
       uses: softprops/action-gh-release@v2
       with:
-        files: build_artifacts/YaNVi_*.dmg
+        files: build_artifacts/${{ env.DMG_NAME }}
