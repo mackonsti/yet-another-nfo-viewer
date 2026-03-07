@@ -23,9 +23,9 @@ jobs:
         xcodebuild \
           -scheme YaNVi \
           -configuration Release \
-          -arch x86_64 \
-          -arch arm64 \
           -derivedDataPath build \
+          ARCHS="x86_64 arm64" \
+          ONLY_ACTIVE_ARCH=NO \
           clean build
 
     - name: Verify universal binary
