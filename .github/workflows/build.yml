@@ -53,11 +53,15 @@ jobs:
         VERSION=${GITHUB_REF_NAME#v}
         DMG_NAME="YaNVi-${VERSION}-universal.dmg"
         echo "Creating DMG: $DMG_NAME"
+        mkdir dmg
+        cp -R build_artifacts/YaNVi.app dmg/
+        ln -s /Applications dmg/Applications
         hdiutil create \
-          -volname "YaNVi" \
-          -srcfolder build_artifacts/YaNVi.app \
+          -volname "YaNVi (U2B)" \
+          -srcfolder dmg \
           -ov -format UDZO \
           "build_artifacts/$DMG_NAME"
+        echo "DMG_NAME=$DMG_NAME" >> $GITHUB_ENV
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
