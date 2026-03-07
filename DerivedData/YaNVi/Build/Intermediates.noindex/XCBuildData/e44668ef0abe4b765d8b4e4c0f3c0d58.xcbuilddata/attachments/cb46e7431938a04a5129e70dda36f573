@@ -1,0 +1,20 @@
+{
+  "" : {
+    "const-values" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/YaNVi-master.swiftconstvalues",
+    "dependencies" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/YaNVi-master.d",
+    "diagnostics" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/YaNVi-master.dia",
+    "emit-module-dependencies" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/YaNVi-master-emit-module.d",
+    "emit-module-diagnostics" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/YaNVi-master-emit-module.dia",
+    "swift-dependencies" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/YaNVi-master.swiftdeps"
+  },
+  "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/AppDelegate.swift" : {
+    "index-unit-output-path" : "/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/AppDelegate.o",
+    "llvm-bc" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/AppDelegate.bc",
+    "object" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/AppDelegate.o"
+  },
+  "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/EscapeWindow.swift" : {
+    "index-unit-output-path" : "/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/EscapeWindow.o",
+    "llvm-bc" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/EscapeWindow.bc",
+    "object" : "/Volumes/SanDisk/Programming/GitHub/yet-another-nfo-viewer/DerivedData/YaNVi/Build/Intermediates.noindex/YaNVi.build/Release/YaNVi.build/Objects-normal/x86_64/EscapeWindow.o"
+  }
+}
