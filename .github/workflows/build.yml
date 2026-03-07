@@ -24,6 +24,7 @@ jobs:
           -scheme YaNVi \
           -configuration Release \
           -derivedDataPath build \
+          -destination 'generic/platform=macOS' \
           ARCHS="x86_64 arm64" \
           ONLY_ACTIVE_ARCH=NO \
           clean build
@@ -39,20 +40,21 @@ jobs:
 
     - name: Create DMG
       run: |
+        VERSION=${GITHUB_REF_NAME#v}
         hdiutil create \
           -volname "YaNVi" \
           -srcfolder build_artifacts/YaNVi.app \
           -ov -format UDZO \
-          build_artifacts/YaNVi.dmg
+          build_artifacts/YaNVi_${VERSION}.dmg
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: YaNVi
-        path: build_artifacts/YaNVi.dmg
+        path: build_artifacts/YaNVi_*.dmg
 
     - name: Upload to release
       if: github.event_name == 'release'
       uses: softprops/action-gh-release@v2
       with:
-        files: build_artifacts/YaNVi.dmg
+        files: build_artifacts/YaNVi_*.dmg
