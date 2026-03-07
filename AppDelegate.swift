@@ -47,6 +47,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openNFOFile()
     }
 
+    // Set the bundled font (without the .ttf extension)
+    let nfoFontName = "MorePerfectDOSVGA"
+    let nfoFontSize: CGFloat = 16
+
     // Track whether the app was launched by opening a file
     var hasDroppedFile = false
 
@@ -99,33 +103,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func registerFonts() {
 
-        // List of bundled fonts (without the .ttf extension)
-        let fonts = [
-            "MorePerfectDOSVGA",
-            "ProFontWindows"
-        ]
+        // If font already exists in system (PostScript name) skip registration
+        if NSFont(name: nfoFontName, size: nfoFontSize) != nil {
+            print("Font already available:", nfoFontName)
+            return
+        }
 
-        for fontName in fonts {
+        // Locate the font file inside the application bundle
+        guard let fontURL = Bundle.main.url(forResource: nfoFontName, withExtension: "ttf") else {
+            print("Font not found in bundle:", nfoFontName)
+            return
+        }
 
-            /*
-             Locate the font file inside the application bundle.
-             Bundle.main.url(...) searches inside:
-             YaNVi.app/Contents/Resources/
-            */
+        var error: Unmanaged<CFError>?
 
-            guard let fontURL = Bundle.main.url(forResource: fontName, withExtension: "ttf") else {
-                print("Font not found in bundle:", fontName)
-                continue
-            }
-
-            /*
-             Register the font with the CoreText font manager.
-             .process means the font is available only to this application
-             during its runtime (perfect for bundled fonts).
-            */
-
-            CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, nil)
-            print("Registered font:", fontName)
+        // Register the font with the CoreText font manager
+        if CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, &error) {
+            print("Registered font:", nfoFontName)
+        } else {
+            print("Font registration failed:", error?.takeRetainedValue().localizedDescription ?? "unknown")
         }
     }
 
@@ -228,7 +224,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("NFO line count:", lines.count)
 
         // Load the DOS font but safely to avoid crashes
-        guard let nfoFont = NSFont(name: "MorePerfectDOSVGA", size: 16) else {
+        guard let nfoFont = NSFont(name: nfoFontName, size: nfoFontSize) else {
             showFatalError(
                 "Required DOS font could not be loaded.",
                 info: "YaNVi requires the bundled DOS font to display NFO files correctly."
@@ -305,7 +301,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sizeForStringDrawing(nfoContents, font: nfoFont)
 
         // Window configuration
-        if !nfoWindow.isVisible { nfoWindow.center() }
+        // if !nfoWindow.isVisible { nfoWindow.center() }
         nfoWindow.title = url.lastPathComponent
         nfoWindow.showsResizeIndicator = false
         nfoWindow.isMovableByWindowBackground = true
@@ -332,7 +328,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func sizeForStringDrawing(_ text: String, font: NSFont) {
 
-        let visibleScreen = NSScreen.main!.visibleFrame
+        // Avoid a theoretical crash if macOS reports no main screen
+        guard let visibleScreen = NSScreen.main?.visibleFrame else { return }
 
         // Split lines
         let lines = text.split(separator: "\n", omittingEmptySubsequences: false)
@@ -384,6 +381,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let windowSize = NSSize(width: ceil(windowWidth), height: ceil(windowHeight))
 
         nfoWindow.setContentSize(windowSize)
+        nfoWindow.center();
         nfoWindow.minSize = NSSize(width: windowWidth, height: windowHeight / 2)
         nfoWindow.maxSize = NSSize(width: windowWidth, height: CGFloat.greatestFiniteMagnitude)
     }

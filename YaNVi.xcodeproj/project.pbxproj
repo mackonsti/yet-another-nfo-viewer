@@ -17,7 +17,6 @@
 		D7FF793F2F5B462C00BA6F5A /* NFO Viewer.icns in Resources */ = {isa = PBXBuildFile; fileRef = D7FF793C2F5B462C00BA6F5A /* NFO Viewer.icns */; };
 		D7FF79412F5B465300BA6F5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FF79402F5B465300BA6F5A /* AppDelegate.swift */; };
 		D7FF79692F5B505900BA6F5A /* MorePerfectDOSVGA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7FF79682F5B505900BA6F5A /* MorePerfectDOSVGA.ttf */; };
-		D7FF796C2F5B505D00BA6F5A /* ProFontWindows.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7FF796B2F5B505D00BA6F5A /* ProFontWindows.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,7 +154,6 @@
 				D7FF79692F5B505900BA6F5A /* MorePerfectDOSVGA.ttf in Resources */,
 				D7D441B52F5B8EA0009A9D4A /* Localizable.strings in Resources */,
 				D7D441B32F5B8EA0009A9D4A /* Localizable.strings in Resources */,
-				D7FF796C2F5B505D00BA6F5A /* ProFontWindows.ttf in Resources */,
 				D7D441902F5B5803009A9D4A /* MainMenu.xib in Resources */,
 				D7FF793F2F5B462C00BA6F5A /* NFO Viewer.icns in Resources */,
 			);
@@ -365,7 +363,7 @@
 				CODE_SIGN_ENTITLEMENTS = YaNVi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2.0;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
@@ -377,7 +375,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YaNVi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -396,7 +394,7 @@
 				CODE_SIGN_ENTITLEMENTS = YaNVi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2.0;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
@@ -408,7 +406,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YaNVi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
