@@ -219,11 +219,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             options: .regularExpression
         )
 
-        // Split lines (used later for metrics)
-        let lines = nfoContents.split(separator: "\n", omittingEmptySubsequences: false)
-        print("NFO line count:", lines.count)
-
-        // Load the DOS font but safely to avoid crashes
+        // Safely load the DOS font to avoid crashes
         guard let nfoFont = NSFont(name: nfoFontName, size: nfoFontSize) else {
             showFatalError(
                 "Required DOS font could not be loaded.",
@@ -275,7 +271,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             value: 0,
             range: NSRange(location: 0, length: nfoTextView.string.count)
         )
-        
+
         // Disable wrapping (important for NFO)
         nfoTextView.isHorizontallyResizable = true
         nfoTextView.isVerticallyResizable = true
@@ -287,7 +283,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         nfoTextView.isContinuousSpellCheckingEnabled = false
         nfoTextView.isGrammarCheckingEnabled = false
-        
+
         nfoTextView.textContainer?.widthTracksTextView = false
         nfoTextView.textContainer?.heightTracksTextView = false
         nfoTextView.textContainer?.lineBreakMode = .byClipping
@@ -333,6 +329,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Split lines
         let lines = text.split(separator: "\n", omittingEmptySubsequences: false)
+        print("NFO line count:", lines.count)
 
         // Longest line
         let longestLineLength = lines.map { $0.count }.max() ?? 0
@@ -346,7 +343,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let textWidth = CGFloat(longestLineLength) * glyphWidth
         let textHeight = CGFloat(lines.count) * lineHeight
 
-        print("Metrics size \(textWidth) x \(textHeight)")
+        print("Metrics size: \(textWidth) x \(textHeight)")
 
         var windowWidth = textWidth
         var windowHeight = textHeight

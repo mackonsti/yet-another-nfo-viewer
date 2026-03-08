@@ -20,7 +20,11 @@ For historical reasons, the very first release posted here will be a re-compiled
 
 ## Current Status
 
-⚠️ **Although this tool is not _abandonware_, it runs extremely low on resources and depends on the good will and time of contributors.** This explains the very few releases over time, especially due to the fact that peopple moved ahead to Swift and Swift UI, while this is an original Xcode 4.x project. Therfore this tool **may not work for you** and your macOS setup, especially recent ones.
+Few days ago, I thought of asking ChatGPT to convert the original Xcode 3.x code to Swift 5.x out of curiosity. As the project is rather simple and straightforward, it could build error-free in little time and work very, very well. Since this is a hobby project on my own free time, I will slowly be working on it and tweaking it step-by-step. This tool is not destined to become anything grand, as I intend to keep it small yet optimised.
+
+## Previous Status
+
+⚠️ **Although this tool is not _abandonware_, it runs extremely low on resources and depends on the good will and time of contributors.** This explains the very few releases over time, especially due to the fact that peopple moved ahead to Swift and Swift UI, while this is an original Xcode 3.x project. Therfore this tool **may not work for you** and your macOS setup, especially recent ones.
 
 Nevertheless, for operational issues found, you can try posting a bug by using [the appropriate section here](https://github.com/mackonsti/yet-another-nfo-viewer/issues) on GitHub. Please be concise, polite and **provide enough information (macOS, architecture, sample NFO and details on reproducing the bug)** if an issue is constantly encountered. Also, kindly use the formatting options for copying-pasting code or logs.
 
@@ -42,6 +46,10 @@ xattr -rc Yet\ Another\ NFO\ Viewer.app
 ```
 
 You can find more information on `xattr` command [here](https://ss64.com/osx/xattr.html).
+
+### Release 1.2.0
+
+This release represents the revamping of the application, having converted it to Swift 5.x with the help of ChatGPT after hours of checking, testing, deliberating and optimising. Comes as a Universal Binary and with a number of small under-the-hood improvements.
 
 ### Release 1.1.3
 
