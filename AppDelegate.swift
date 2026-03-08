@@ -47,6 +47,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openNFOFile()
     }
 
+    @IBAction func printDocument(_ sender: Any?) {
+        print("Menu Print selected")
+
+        // Printing defaults of a temporary session
+        let printInfo = NSPrintInfo.shared.copy() as! NSPrintInfo
+
+        // Reduce margins (in points) for wide ASCII
+        printInfo.leftMargin = 50
+        printInfo.rightMargin = 50
+        printInfo.topMargin = 50
+        printInfo.bottomMargin = 50
+
+        // Pagination
+        printInfo.horizontalPagination = .fit
+        printInfo.verticalPagination = .automatic
+        printInfo.isHorizontallyCentered = true
+        printInfo.isVerticallyCentered = false
+
+        // Landscape helps with wide NFOs
+        printInfo.orientation = .landscape
+
+        // Set the available printing options
+        let operation = NSPrintOperation(view: nfoTextView, printInfo: printInfo)
+        operation.printPanel.options = [
+            .showsCopies,
+            .showsPageRange,
+            .showsPaperSize,
+            .showsOrientation,
+            .showsScaling,
+            .showsPreview
+        ]
+        operation.run()
+    }
+
     // Set the bundled font (without the .ttf extension)
     let nfoFontName = "MorePerfectDOSVGA"
     let nfoFontSize: CGFloat = 16
