@@ -1,5 +1,6 @@
 .DS_Store
-build
-DerivedData
-project.xcworkspace
-xcuserdata
+build/
+DerivedData/
+xcuserdata/
+xcuserstate/
+project.xcworkspace/

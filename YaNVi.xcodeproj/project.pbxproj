@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D740A3142F5C40B900CD723C /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740A3132F5C40B900CD723C /* PreviewViewController.swift */; };
+		D740A31E2F5C40B900CD723C /* YaNViQuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D740A30E2F5C40B900CD723C /* YaNViQuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D740A32A2F5C4ABB00CD723C /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D740A3172F5C40B900CD723C /* PreviewViewController.xib */; };
+		D740A32B2F5C4CBA00CD723C /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D740A3102F5C40B900CD723C /* Quartz.framework */; };
+		D740A32C2F5C584B00CD723C /* MorePerfectDOSVGA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7FF79682F5B505900BA6F5A /* MorePerfectDOSVGA.ttf */; };
+		D76888EC2F60AAE6008F5022 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D76888EB2F60AAE6008F5022 /* Credits.rtf */; };
 		D7D441902F5B5803009A9D4A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7D4418F2F5B5803009A9D4A /* MainMenu.xib */; };
 		D7D441972F5B5A4B009A9D4A /* EscapeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D441962F5B5A4B009A9D4A /* EscapeWindow.swift */; };
 		D7D441B22F5B8EA0009A9D4A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7D441A92F5B8EA0009A9D4A /* InfoPlist.strings */; };
@@ -19,7 +25,47 @@
 		D7FF79692F5B505900BA6F5A /* MorePerfectDOSVGA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7FF79682F5B505900BA6F5A /* MorePerfectDOSVGA.ttf */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D740A31C2F5C40B900CD723C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7FF78FD2F5B004D00BA6F5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D740A30D2F5C40B900CD723C;
+			remoteInfo = YaNViQuickLook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D740A31F2F5C40B900CD723C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D740A31E2F5C40B900CD723C /* YaNViQuickLook.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D740A3292F5C44A300CD723C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		D740A30E2F5C40B900CD723C /* YaNViQuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = YaNViQuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D740A3102F5C40B900CD723C /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		D740A3132F5C40B900CD723C /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		D740A3182F5C40B900CD723C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
+		D740A31B2F5C40B900CD723C /* YaNViQuickLook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YaNViQuickLook.entitlements; sourceTree = "<group>"; };
+		D76888EA2F60AAE6008F5022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
 		D7D4418E2F5B5803009A9D4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D7D441962F5B5A4B009A9D4A /* EscapeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EscapeWindow.swift; sourceTree = SOURCE_ROOT; };
 		D7D441A82F5B8EA0009A9D4A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -35,6 +81,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D740A30B2F5C40B900CD723C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D740A32B2F5C4CBA00CD723C /* Quartz.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7FF79022F5B004D00BA6F5A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,6 +99,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D740A30F2F5C40B900CD723C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D740A3102F5C40B900CD723C /* Quartz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D740A3122F5C40B900CD723C /* YaNViQuickLook */ = {
+			isa = PBXGroup;
+			children = (
+				D740A3132F5C40B900CD723C /* PreviewViewController.swift */,
+				D740A3172F5C40B900CD723C /* PreviewViewController.xib */,
+				D740A31B2F5C40B900CD723C /* YaNViQuickLook.entitlements */,
+			);
+			path = YaNViQuickLook;
+			sourceTree = "<group>";
+		};
 		D7D441AC2F5B8EA0009A9D4A /* fr.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +138,7 @@
 		D7FF78FC2F5B004D00BA6F5A = {
 			isa = PBXGroup;
 			children = (
+				D76888EB2F60AAE6008F5022 /* Credits.rtf */,
 				D7D441B12F5B8EA0009A9D4A /* en.lproj */,
 				D7D441AC2F5B8EA0009A9D4A /* fr.lproj */,
 				D7FF79402F5B465300BA6F5A /* AppDelegate.swift */,
@@ -75,6 +148,8 @@
 				D7FF793C2F5B462C00BA6F5A /* NFO Viewer.icns */,
 				D7FF79682F5B505900BA6F5A /* MorePerfectDOSVGA.ttf */,
 				D7FF796B2F5B505D00BA6F5A /* ProFontWindows.ttf */,
+				D740A3122F5C40B900CD723C /* YaNViQuickLook */,
+				D740A30F2F5C40B900CD723C /* Frameworks */,
 				D7FF79062F5B004D00BA6F5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				D7FF79052F5B004D00BA6F5A /* YaNVi.app */,
+				D740A30E2F5C40B900CD723C /* YaNViQuickLook.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,6 +167,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D740A30D2F5C40B900CD723C /* YaNViQuickLook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D740A3222F5C40B900CD723C /* Build configuration list for PBXNativeTarget "YaNViQuickLook" */;
+			buildPhases = (
+				D740A30A2F5C40B900CD723C /* Sources */,
+				D740A30B2F5C40B900CD723C /* Frameworks */,
+				D740A30C2F5C40B900CD723C /* Resources */,
+				D740A3292F5C44A300CD723C /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YaNViQuickLook;
+			productName = YaNViQuickLook;
+			productReference = D740A30E2F5C40B900CD723C /* YaNViQuickLook.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D7FF79042F5B004D00BA6F5A /* YaNVi */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7FF79122F5B004F00BA6F5A /* Build configuration list for PBXNativeTarget "YaNVi" */;
@@ -98,10 +192,12 @@
 				D7FF79012F5B004D00BA6F5A /* Sources */,
 				D7FF79022F5B004D00BA6F5A /* Frameworks */,
 				D7FF79032F5B004D00BA6F5A /* Resources */,
+				D740A31F2F5C40B900CD723C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D740A31D2F5C40B900CD723C /* PBXTargetDependency */,
 			);
 			name = YaNVi;
 			productName = YaNVi;
@@ -118,6 +214,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					D740A30D2F5C40B900CD723C = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					D7FF79042F5B004D00BA6F5A = {
 						CreatedOnToolsVersion = 15.4;
 						LastSwiftMigration = 1540;
@@ -139,22 +238,33 @@
 			projectRoot = "";
 			targets = (
 				D7FF79042F5B004D00BA6F5A /* YaNVi */,
+				D740A30D2F5C40B900CD723C /* YaNViQuickLook */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D740A30C2F5C40B900CD723C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D740A32A2F5C4ABB00CD723C /* PreviewViewController.xib in Resources */,
+				D740A32C2F5C584B00CD723C /* MorePerfectDOSVGA.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7FF79032F5B004D00BA6F5A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7FF793E2F5B462C00BA6F5A /* NFO Document.icns in Resources */,
-				D7D441B42F5B8EA0009A9D4A /* InfoPlist.strings in Resources */,
 				D7D441B22F5B8EA0009A9D4A /* InfoPlist.strings in Resources */,
-				D7FF79692F5B505900BA6F5A /* MorePerfectDOSVGA.ttf in Resources */,
-				D7D441B52F5B8EA0009A9D4A /* Localizable.strings in Resources */,
+				D76888EC2F60AAE6008F5022 /* Credits.rtf in Resources */,
 				D7D441B32F5B8EA0009A9D4A /* Localizable.strings in Resources */,
+				D7D441B42F5B8EA0009A9D4A /* InfoPlist.strings in Resources */,
+				D7D441B52F5B8EA0009A9D4A /* Localizable.strings in Resources */,
+				D7FF79692F5B505900BA6F5A /* MorePerfectDOSVGA.ttf in Resources */,
 				D7D441902F5B5803009A9D4A /* MainMenu.xib in Resources */,
+				D7FF793E2F5B462C00BA6F5A /* NFO Document.icns in Resources */,
 				D7FF793F2F5B462C00BA6F5A /* NFO Viewer.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +272,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D740A30A2F5C40B900CD723C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D740A3142F5C40B900CD723C /* PreviewViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7FF79012F5B004D00BA6F5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -173,7 +291,31 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D740A31D2F5C40B900CD723C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D740A30D2F5C40B900CD723C /* YaNViQuickLook */;
+			targetProxy = D740A31C2F5C40B900CD723C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		D740A3172F5C40B900CD723C /* PreviewViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D740A3182F5C40B900CD723C /* Base */,
+			);
+			name = PreviewViewController.xib;
+			sourceTree = "<group>";
+		};
+		D76888EB2F60AAE6008F5022 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D76888EA2F60AAE6008F5022 /* Base */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
 		D7D4418F2F5B5803009A9D4A /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -233,6 +375,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D740A3202F5C40B900CD723C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = YaNViQuickLook/YaNViQuickLook.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YaNViQuickLook/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YaNViQuickLook;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "$(COPYRIGHT)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YaNVi.QuickLook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D740A3212F5C40B900CD723C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = YaNViQuickLook/YaNViQuickLook.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YaNViQuickLook/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YaNViQuickLook;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "$(COPYRIGHT)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YaNVi.QuickLook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		D7FF79102F5B004F00BA6F5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -268,6 +460,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.3.0;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -287,7 +480,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -332,6 +526,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.3.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -345,7 +540,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.3.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -356,26 +552,30 @@
 		D7FF79132F5B004F00BA6F5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YaNVi.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2.1;
+				CURRENT_PROJECT_VERSION = 1.3.0;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = YaNVi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "$(COPYRIGHT)";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YaNVi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -387,26 +587,30 @@
 		D7FF79142F5B004F00BA6F5A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YaNVi.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2.1;
+				CURRENT_PROJECT_VERSION = 1.3.0;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = YaNVi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "$(COPYRIGHT)";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YaNVi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -417,6 +621,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D740A3222F5C40B900CD723C /* Build configuration list for PBXNativeTarget "YaNViQuickLook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D740A3202F5C40B900CD723C /* Debug */,
+				D740A3212F5C40B900CD723C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D7FF79002F5B004D00BA6F5A /* Build configuration list for PBXProject "YaNVi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

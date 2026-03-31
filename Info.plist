@@ -55,5 +55,32 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Scene Release Document</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>NFO Document.icns</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.mackonsti.scene.document</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>nfo</string>
+					<string>asc</string>
+					<string>diz</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

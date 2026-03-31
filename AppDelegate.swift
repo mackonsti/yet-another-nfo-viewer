@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         printInfo.isVerticallyCentered = false
 
         // Landscape helps with wide NFOs
-        printInfo.orientation = .landscape
+        printInfo.orientation = .portrait
 
         // Set the available printing options
         let operation = NSPrintOperation(view: nfoTextView, printInfo: printInfo)
