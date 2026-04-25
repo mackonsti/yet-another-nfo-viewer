@@ -172,7 +172,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func nfoEncoding() -> String.Encoding {
 
         let cfEncoding = CFStringConvertWindowsCodepageToEncoding(437)
-        // Fallback encoding just in case DOS437 is not detected
+        // Fallback encoding just in case CP437 is not detected
         guard cfEncoding != kCFStringEncodingInvalidId else { return .isoLatin1 }
         let nsEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding)
 

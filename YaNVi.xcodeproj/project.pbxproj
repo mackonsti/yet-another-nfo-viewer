@@ -78,7 +78,6 @@
 		D7FF793C2F5B462C00BA6F5A /* NFO Viewer.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "NFO Viewer.icns"; sourceTree = SOURCE_ROOT; };
 		D7FF79402F5B465300BA6F5A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		D7FF79672F5B505900BA6F5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/MorePerfectDOSVGA.ttf; sourceTree = "<group>"; };
-		D7FF796A2F5B505D00BA6F5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/ProFontWindows.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +148,6 @@
 				D7FF793B2F5B462C00BA6F5A /* NFO Document.icns */,
 				D7FF793C2F5B462C00BA6F5A /* NFO Viewer.icns */,
 				D7FF79682F5B505900BA6F5A /* MorePerfectDOSVGA.ttf */,
-				D7FF796B2F5B505D00BA6F5A /* ProFontWindows.ttf */,
 				D740A3122F5C40B900CD723C /* YaNViQuickLook */,
 				D740A30F2F5C40B900CD723C /* Frameworks */,
 				D7FF79062F5B004D00BA6F5A /* Products */,
@@ -364,14 +362,6 @@
 				D7FF79672F5B505900BA6F5A /* Base */,
 			);
 			name = MorePerfectDOSVGA.ttf;
-			sourceTree = "<group>";
-		};
-		D7FF796B2F5B505D00BA6F5A /* ProFontWindows.ttf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D7FF796A2F5B505D00BA6F5A /* Base */,
-			);
-			name = ProFontWindows.ttf;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

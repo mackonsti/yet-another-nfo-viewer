@@ -16,7 +16,7 @@
 				<string>diz</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>NFO Document.icns</string>
+			<string>NFO Document</string>
 			<key>CFBundleTypeName</key>
 			<string>Scene Release Document</string>
 			<key>CFBundleTypeRole</key>
@@ -28,7 +28,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIconFile</key>
-	<string>NFO Viewer.icns</string>
+	<string>NFO Viewer</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -54,19 +54,16 @@
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.mackonsti.scene.document</string>
+			<key>UTTypeDescription</key>
+			<string>Scene Release Document</string>
+			<key>UTTypeIconFile</key>
+			<string>NFO Document</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.plain-text</string>
 			</array>
-			<key>UTTypeDescription</key>
-			<string>Scene Release Document</string>
-			<key>UTTypeIcons</key>
-			<dict>
-				<key>UTTypeIconBadgeName</key>
-				<string>NFO Document.icns</string>
-			</dict>
-			<key>UTTypeIdentifier</key>
-			<string>com.mackonsti.scene.document</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>

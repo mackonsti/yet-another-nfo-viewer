@@ -90,7 +90,7 @@ class PreviewViewController: NSViewController, QLPreviewingController {
 
     func preparePreviewOfFile(at url: URL) async throws {
 
-        print("\nQuickLook extension loaded for:", url)
+        print("\nQuickLook extension loaded for:", url.lastPathComponent)
 
         // Ensure the bundled DOS font is available
         registerFonts()
@@ -175,8 +175,8 @@ class PreviewViewController: NSViewController, QLPreviewingController {
                 width: textWidth + nfoMargin,
                 height: textHeight
             )
-        }
 
-        print("Unicode characters count: file \(nfoContents.count) vs. view: \(textView.string.count)")
+            print("Unicode characters count: file \(nfoContents.count) ≠ view: \(textView.string.count)")
+        }
     }
 }
