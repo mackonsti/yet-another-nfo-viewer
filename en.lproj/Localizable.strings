@@ -2,3 +2,5 @@
 
 /* Message Dialog */
 "OPEN_SELECT_FILE" = "Please select the NFO, ASC or DIZ artwork file to view:";
+"FILE_READ_ERROR_TITLE" = "Cannot open file";
+"FILE_READ_ERROR_INFO" = "The file \"%@\" could not be read. It may be damaged or uses an unsupported encoding.";

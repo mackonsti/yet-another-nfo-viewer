@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  YaNVi
 //
-//  Created by Konstantinos Giannakas on 06/03/2026.
+//  Created by mackonsti@outlook.com on 06/03/2026.
 //
 
 import Cocoa
@@ -51,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("Menu Print selected")
 
         // Printing defaults of a temporary session
-        let printInfo = NSPrintInfo.shared.copy() as! NSPrintInfo
+        guard let printInfo = NSPrintInfo.shared.copy() as? NSPrintInfo else { return }
 
         // Reduce margins (in points) for wide ASCII
         printInfo.leftMargin = 50
@@ -172,6 +172,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func nfoEncoding() -> String.Encoding {
 
         let cfEncoding = CFStringConvertWindowsCodepageToEncoding(437)
+        // Fallback encoding just in case DOS437 is not detected
+        guard cfEncoding != kCFStringEncodingInvalidId else { return .isoLatin1 }
         let nsEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding)
 
         return String.Encoding(rawValue: nsEncoding)
@@ -192,11 +194,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let openPanel = NSOpenPanel()
 
-        openPanel.allowedContentTypes = [
-            UTType(filenameExtension: "nfo")!,
-            UTType(filenameExtension: "asc")!,
-            UTType(filenameExtension: "diz")!
-        ]
+        // Since com.mackonsti.scene.document is already declared in Info.plist
+        // under ExportedTypeDeclarations, this is the correct and safe method
+        let sceneDocument = UTType(exportedAs: "com.mackonsti.scene.document")
+
+        openPanel.allowedContentTypes = [sceneDocument]
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseFiles = true
         openPanel.resolvesAliases = true
@@ -230,7 +232,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Read file using DOS codepage 437
         guard var nfoContents = try? String(contentsOf: url, encoding: nfoEncoding()) else {
-            print("Unable to read file for some reason")
+            print("Unable to read file: ", url.lastPathComponent)
+
+            // Display a native warning
+            let alert = NSAlert()
+
+            alert.alertStyle = .warning
+            alert.messageText = NSLocalizedString("FILE_READ_ERROR_TITLE", comment: "")
+            alert.informativeText = String(format: NSLocalizedString("FILE_READ_ERROR_INFO", comment: ""), url.lastPathComponent)
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+
             return
         }
 
@@ -300,10 +312,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
          alignment, so we explicitly disable them.
         */
 
+        let utf16Length = (nfoTextView.string as NSString).length
         nfoTextView.textStorage?.addAttribute(
             .ligature,
             value: 0,
-            range: NSRange(location: 0, length: nfoTextView.string.count)
+            range: NSRange(location: 0, length:utf16Length)
         )
 
         // Disable wrapping (important for NFO)
@@ -368,8 +381,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Longest line
         let longestLineLength = lines.map { $0.count }.max() ?? 0
 
-        // True line height used by AppKit
-        let lineHeight = ceil(NSLayoutManager().defaultLineHeight(for: font))
+        // Find true line height used by AppKit
+        let lineHeight: CGFloat
+        if let layoutManager = nfoTextView.layoutManager {
+            lineHeight = ceil(layoutManager.defaultLineHeight(for: font))
+        } else {
+            // Fallback: derive line height from the font's own typographic metrics
+            lineHeight = ceil(font.ascender + abs(font.descender) + font.leading)
+        }
 
         // Monospaced glyph width
         let glyphWidth = ceil("M".size(withAttributes: [.font: font]).width)
@@ -412,7 +431,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let windowSize = NSSize(width: ceil(windowWidth), height: ceil(windowHeight))
 
         nfoWindow.setContentSize(windowSize)
-        nfoWindow.center();
+        nfoWindow.center()
         nfoWindow.minSize = NSSize(width: windowWidth, height: windowHeight / 2)
         nfoWindow.maxSize = NSSize(width: windowWidth, height: CGFloat.greatestFiniteMagnitude)
     }

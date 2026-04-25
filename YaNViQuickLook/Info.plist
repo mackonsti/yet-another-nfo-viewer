@@ -18,5 +18,25 @@
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>$(COPYRIGHT)</string>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+			<key>UTTypeIdentifier</key>
+			<string>com.mackonsti.scene.document</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>nfo</string>
+					<string>asc</string>
+					<string>diz</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -2,7 +2,7 @@
 //  PreviewViewController.swift
 //  YaNViQuickLook
 //
-//  Created by Konstantinos Giannakas on 7/3/26.
+//  Created by mackonsti@outlook.com on 7/3/2026.
 //
 
 import Cocoa
@@ -61,7 +61,7 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         }
 
         // Locate the font file inside the application bundle
-        guard let fontURL = Bundle.main.url(forResource: nfoFontName, withExtension: "ttf") else {
+        guard let fontURL = Bundle(for: type(of: self)).url(forResource: nfoFontName, withExtension: "ttf") else {
             print("Font not found in bundle:", nfoFontName)
             return
         }
@@ -80,6 +80,8 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     func nfoEncoding() -> String.Encoding {
 
         let cfEncoding = CFStringConvertWindowsCodepageToEncoding(437)
+        // Fallback encoding just in case DOS437 is not detected
+        guard cfEncoding != kCFStringEncodingInvalidId else { return .isoLatin1 }
         let nsEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding)
 
         return String.Encoding(rawValue: nsEncoding)
@@ -94,8 +96,9 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         registerFonts()
 
         // Safely load the DOS font to avoid crashes
+        struct QLError: Error { let message: String }
         guard let nfoFont = NSFont(name: nfoFontName, size: nfoFontSize) else {
-            fatalError("DOS font failed to load")
+            throw QLError(message: "DOS font failed to load")
         }
 
         // Read NFO file using CP437 encoding
@@ -110,6 +113,13 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         // Remove trailing spaces or tabs on every line
         nfoContents = nfoContents.replacingOccurrences(
             of: #"(?m)[ \t]+$"#,
+            with: "",
+            options: .regularExpression
+        )
+
+        // Remove trailing blank lines
+        nfoContents = nfoContents.replacingOccurrences(
+            of: #"\n+$"#,
             with: "",
             options: .regularExpression
         )
@@ -136,8 +146,14 @@ class PreviewViewController: NSViewController, QLPreviewingController {
             textView.font = nfoFont
             textView.string = nfoContents
 
-            // True line height used by AppKit
-            let lineHeight = ceil(textView.layoutManager!.defaultLineHeight(for: nfoFont))
+            // Find true line height used by AppKit
+            let lineHeight: CGFloat
+            if let layoutManager = textView.layoutManager {
+                lineHeight = ceil(layoutManager.defaultLineHeight(for: nfoFont))
+            } else {
+                // Fallback: derive line height from the font's own metrics
+                lineHeight = ceil(nfoFont.ascender + abs(nfoFont.descender) + nfoFont.leading)
+            }
 
             // Monospaced glyph width
             let glyphWidth = ceil("M".size(withAttributes: [.font: nfoFont]).width)

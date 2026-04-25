@@ -1,4 +1,6 @@
 /* Localizable.strings */
 
 /* Message Dialog */
-"OPEN_SELECT_FILE" = "Séléctionnez le fichier NFO, ASC ou DIZ à visualiser :";
+"OPEN_SELECT_FILE" = "Sélectionnez le fichier NFO, ASC ou DIZ à visualiser :";
+"FILE_READ_ERROR_TITLE" = "Impossible d'ouvrir le fichier";
+"FILE_READ_ERROR_INFO" = "Le fichier « %@ » n'a pas pu être lu. Il est peut-être endommagé ou utilise un encodage non pris en charge.";
