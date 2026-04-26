@@ -1,4 +1,5 @@
 .DS_Store
+git_build.sh
 build/
 DerivedData/
 xcuserdata/

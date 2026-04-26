@@ -230,8 +230,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         print("Imported \(url)")
 
-        // Read file using DOS codepage 437
-        guard var nfoContents = try? String(contentsOf: url, encoding: nfoEncoding()) else {
+        // Read NFO file contents using CP437 encoding
+        guard let nfoInput = try? String(contentsOf: url, encoding: nfoEncoding()) else {
             print("Unable to read file: ", url.lastPathComponent)
 
             // Display a native warning
@@ -246,24 +246,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        // Convert LF or CR to "\n"
-        nfoContents = nfoContents
-            .replacingOccurrences(of: "\r\n", with: "\n")
-            .replacingOccurrences(of: "\r", with: "\n")
+        var lines = [String]()
+        var longestLine = 0
 
-        // Remove trailing spaces or tabs on every line
-        nfoContents = nfoContents.replacingOccurrences(
-            of: #"(?m)[ \t]+$"#,
-            with: "",
-            options: .regularExpression
-        )
+        // Single-pass enumeration to normalize line endings and trim spaces (no Regex overhead)
+        nfoInput.enumerateLines { line, _ in
 
-        // Remove trailing blank lines
-        nfoContents = nfoContents.replacingOccurrences(
-            of: #"\n+$"#,
-            with: "",
-            options: .regularExpression
-        )
+            // Natively replace all tabs with 4 spaces before trimming
+            // var trimmed = line.replacingOccurrences(of: "\t", with: "    ")[...]
+            var trimmed = line[...]
+
+            // Look at very last character and remove it if whitespace and save it back
+            while trimmed.last?.isWhitespace == true { trimmed.removeLast() }
+            lines.append(String(trimmed))
+
+            if trimmed.count > longestLine { longestLine = trimmed.count }
+        }
+
+        // Remember the original number of lines before any trimming at the bottom
+        let originalLineCount = lines.count
+
+        // Remove all trailing blank lines at the bottom of document except one
+        while lines.last?.isEmpty == true { lines.removeLast() }
+        lines.append("")
+
+        // Rejoin into a single string for the NSTextView coming next
+        let nfoContents = lines.joined(separator: "\n")
+        let finalLineCount = lines.count
+        print("NFO count: \(originalLineCount) lines became \(finalLineCount) @ maximum \(longestLine) chars")
 
         // Safely load the DOS font to avoid crashes
         guard let nfoFont = NSFont(name: nfoFontName, size: nfoFontSize) else {
@@ -341,7 +351,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         nfoTextView.textColor = .black
 
         // Calculate window size required for the ASCII art
-        sizeForStringDrawing(nfoContents, font: nfoFont)
+        sizeForWindowDrawing(longestLine: longestLine, numberOfLines: finalLineCount, font: nfoFont)
 
         // Window configuration
         // if !nfoWindow.isVisible { nfoWindow.center() }
@@ -369,20 +379,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      rendered text via NSLayoutManager.
      */
 
-    func sizeForStringDrawing(_ text: String, font: NSFont) {
+    func sizeForWindowDrawing(longestLine: Int, numberOfLines: Int, font: NSFont) {
 
         // Avoid a theoretical crash if macOS reports no main screen
         guard let visibleScreen = NSScreen.main?.visibleFrame else { return }
 
-        // Split lines
-        let lines = text.split(separator: "\n", omittingEmptySubsequences: false)
-        print("NFO line count:", lines.count)
-
-        // Longest line
-        let longestLineLength = lines.map { $0.count }.max() ?? 0
-
         // Find true line height used by AppKit
         let lineHeight: CGFloat
+
         if let layoutManager = nfoTextView.layoutManager {
             lineHeight = ceil(layoutManager.defaultLineHeight(for: font))
         } else {
@@ -393,10 +397,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Monospaced glyph width
         let glyphWidth = ceil("M".size(withAttributes: [.font: font]).width)
 
-        let textWidth = CGFloat(longestLineLength) * glyphWidth
-        let textHeight = CGFloat(lines.count) * lineHeight
+        let textWidth = CGFloat(longestLine) * glyphWidth
+        let textHeight = CGFloat(numberOfLines) * lineHeight
 
-        print("Metrics size: \(textWidth) x \(textHeight)")
+        print("View metrics: \(textWidth) x \(textHeight) pixels")
 
         var windowWidth = textWidth
         var windowHeight = textHeight

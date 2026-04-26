@@ -80,6 +80,7 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     func nfoEncoding() -> String.Encoding {
 
         let cfEncoding = CFStringConvertWindowsCodepageToEncoding(437)
+
         // Fallback encoding just in case DOS437 is not detected
         guard cfEncoding != kCFStringEncodingInvalidId else { return .isoLatin1 }
         let nsEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding)
@@ -101,37 +102,38 @@ class PreviewViewController: NSViewController, QLPreviewingController {
             throw QLError(message: "DOS font failed to load")
         }
 
-        // Read NFO file using CP437 encoding
+        // Read NFO file contents using CP437 encoding
         let encoding = nfoEncoding()
-        var nfoContents = try String(contentsOf: url, encoding: encoding)
+        let nfoInput = try String(contentsOf: url, encoding: encoding)
 
-        // Convert LF or CR to "\n"
-        nfoContents = nfoContents
-            .replacingOccurrences(of: "\r\n", with: "\n")
-            .replacingOccurrences(of: "\r", with: "\n")
+        var lines = [String]()
+        var longestLine = 0
 
-        // Remove trailing spaces or tabs on every line
-        nfoContents = nfoContents.replacingOccurrences(
-            of: #"(?m)[ \t]+$"#,
-            with: "",
-            options: .regularExpression
-        )
+        // Single-pass enumeration to normalize line endings and trim spaces (no Regex overhead)
+        nfoInput.enumerateLines { line, _ in
 
-        // Remove trailing blank lines
-        nfoContents = nfoContents.replacingOccurrences(
-            of: #"\n+$"#,
-            with: "",
-            options: .regularExpression
-        )
+            // Natively replace all tabs with 4 spaces before trimming
+            // var trimmed = line.replacingOccurrences(of: "\t", with: "    ")[...]
+            var trimmed = line[...]
 
-        // Split lines
-        let lines = nfoContents.split(separator: "\n", omittingEmptySubsequences: false)
-        print("NFO line count:", lines.count)
+            // Look at very last character and remove it if whitespace and save it back
+            while trimmed.last?.isWhitespace == true { trimmed.removeLast() }
+            lines.append(String(trimmed))
 
-        // Determine metrics
-        let longestLine = lines.map { $0.count }.max() ?? 0
-        let numberOfLines = lines.count
-        print("Longest line has: \(longestLine) chars")
+            if trimmed.count > longestLine { longestLine = trimmed.count }
+        }
+
+        // Remember the original number of lines before any trimming at the bottom
+        let originalLineCount = lines.count
+
+        // Remove all trailing blank lines at the bottom of document except one
+        while lines.last?.isEmpty == true { lines.removeLast() }
+        lines.append("")
+
+        // Rejoin into a single string for the NSTextView coming next
+        let nfoContents = lines.joined(separator: "\n")
+        let finalLineCount = lines.count
+        print("NFO count: \(originalLineCount) lines became \(finalLineCount) @ maxumum \(longestLine) chars" )
 
         await MainActor.run {
 
@@ -160,14 +162,14 @@ class PreviewViewController: NSViewController, QLPreviewingController {
 
             // Calculate ASCII art size
             let textWidth = CGFloat(longestLine) * glyphWidth
-            let textHeight = CGFloat(numberOfLines) * lineHeight
+            let textHeight = CGFloat(finalLineCount) * lineHeight
 
-            print("Metrics size: \(textWidth) x \(textHeight)")
+            print("View metrics: \(textWidth) x \(textHeight) pixels")
 
             // Disable wrapping
             textView.textContainer?.containerSize = NSSize(
                 width: textWidth,
-                height: textHeight
+                height: textHeight + nfoMargin
             )
 
             // Request QuickLook panel size
