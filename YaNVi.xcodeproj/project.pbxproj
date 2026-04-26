@@ -19,6 +19,11 @@
 		D7D441B32F5B8EA0009A9D4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7D441AB2F5B8EA0009A9D4A /* Localizable.strings */; };
 		D7D441B42F5B8EA0009A9D4A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7D441AE2F5B8EA0009A9D4A /* InfoPlist.strings */; };
 		D7D441B52F5B8EA0009A9D4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7D441B02F5B8EA0009A9D4A /* Localizable.strings */; };
+		D7F247A22F9D4E7400C6BE24 /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F247A12F9D4E7400C6BE24 /* QuickLookThumbnailing.framework */; };
+		D7F247A32F9D4E7400C6BE24 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D740A3102F5C40B900CD723C /* Quartz.framework */; };
+		D7F247A62F9D4E7400C6BE24 /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F247A52F9D4E7400C6BE24 /* ThumbnailProvider.swift */; };
+		D7F247AB2F9D4E7400C6BE24 /* YaNViThumbnails.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D7F247A02F9D4E7400C6BE24 /* YaNViThumbnails.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D7F247AF2F9D50CF00C6BE24 /* MorePerfectDOSVGA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7FF79682F5B505900BA6F5A /* MorePerfectDOSVGA.ttf */; };
 		D7FF793E2F5B462C00BA6F5A /* NFO Document.icns in Resources */ = {isa = PBXBuildFile; fileRef = D7FF793B2F5B462C00BA6F5A /* NFO Document.icns */; };
 		D7FF793F2F5B462C00BA6F5A /* NFO Viewer.icns in Resources */ = {isa = PBXBuildFile; fileRef = D7FF793C2F5B462C00BA6F5A /* NFO Viewer.icns */; };
 		D7FF79412F5B465300BA6F5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FF79402F5B465300BA6F5A /* AppDelegate.swift */; };
@@ -33,6 +38,13 @@
 			remoteGlobalIDString = D740A30D2F5C40B900CD723C;
 			remoteInfo = YaNViQuickLook;
 		};
+		D7F247A92F9D4E7400C6BE24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7FF78FD2F5B004D00BA6F5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7F2479F2F9D4E7400C6BE24;
+			remoteInfo = YaNViThumbnails;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +55,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				D740A31E2F5C40B900CD723C /* YaNViQuickLook.appex in Embed Foundation Extensions */,
+				D7F247AB2F9D4E7400C6BE24 /* YaNViThumbnails.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +86,11 @@
 		D7D441AA2F5B8EA0009A9D4A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
 		D7D441AD2F5B8EA0009A9D4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		D7D441AF2F5B8EA0009A9D4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		D7F247A02F9D4E7400C6BE24 /* YaNViThumbnails.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = YaNViThumbnails.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7F247A12F9D4E7400C6BE24 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
+		D7F247A52F9D4E7400C6BE24 /* ThumbnailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailProvider.swift; sourceTree = "<group>"; };
+		D7F247A72F9D4E7400C6BE24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7F247A82F9D4E7400C6BE24 /* YaNViThumbnails.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YaNViThumbnails.entitlements; sourceTree = "<group>"; };
 		D7FF79052F5B004D00BA6F5A /* YaNVi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YaNVi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7FF793B2F5B462C00BA6F5A /* NFO Document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "NFO Document.icns"; sourceTree = SOURCE_ROOT; };
 		D7FF793C2F5B462C00BA6F5A /* NFO Viewer.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "NFO Viewer.icns"; sourceTree = SOURCE_ROOT; };
@@ -86,6 +104,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D740A32B2F5C4CBA00CD723C /* Quartz.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7F2479D2F9D4E7400C6BE24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7F247A22F9D4E7400C6BE24 /* QuickLookThumbnailing.framework in Frameworks */,
+				D7F247A32F9D4E7400C6BE24 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				D740A3102F5C40B900CD723C /* Quartz.framework */,
+				D7F247A12F9D4E7400C6BE24 /* QuickLookThumbnailing.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,6 +163,16 @@
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
+		D7F247A42F9D4E7400C6BE24 /* YaNViThumbnails */ = {
+			isa = PBXGroup;
+			children = (
+				D7F247A52F9D4E7400C6BE24 /* ThumbnailProvider.swift */,
+				D7F247A72F9D4E7400C6BE24 /* Info.plist */,
+				D7F247A82F9D4E7400C6BE24 /* YaNViThumbnails.entitlements */,
+			);
+			path = YaNViThumbnails;
+			sourceTree = "<group>";
+		};
 		D7FF78FC2F5B004D00BA6F5A = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +187,7 @@
 				D7FF793C2F5B462C00BA6F5A /* NFO Viewer.icns */,
 				D7FF79682F5B505900BA6F5A /* MorePerfectDOSVGA.ttf */,
 				D740A3122F5C40B900CD723C /* YaNViQuickLook */,
+				D7F247A42F9D4E7400C6BE24 /* YaNViThumbnails */,
 				D740A30F2F5C40B900CD723C /* Frameworks */,
 				D7FF79062F5B004D00BA6F5A /* Products */,
 			);
@@ -160,6 +199,7 @@
 			children = (
 				D7FF79052F5B004D00BA6F5A /* YaNVi.app */,
 				D740A30E2F5C40B900CD723C /* YaNViQuickLook.appex */,
+				D7F247A02F9D4E7400C6BE24 /* YaNViThumbnails.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,6 +225,23 @@
 			productReference = D740A30E2F5C40B900CD723C /* YaNViQuickLook.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		D7F2479F2F9D4E7400C6BE24 /* YaNViThumbnails */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7F247AC2F9D4E7400C6BE24 /* Build configuration list for PBXNativeTarget "YaNViThumbnails" */;
+			buildPhases = (
+				D7F2479C2F9D4E7400C6BE24 /* Sources */,
+				D7F2479D2F9D4E7400C6BE24 /* Frameworks */,
+				D7F2479E2F9D4E7400C6BE24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YaNViThumbnails;
+			productName = YaNViThumbnails;
+			productReference = D7F247A02F9D4E7400C6BE24 /* YaNViThumbnails.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D7FF79042F5B004D00BA6F5A /* YaNVi */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7FF79122F5B004F00BA6F5A /* Build configuration list for PBXNativeTarget "YaNVi" */;
@@ -198,6 +255,7 @@
 			);
 			dependencies = (
 				D740A31D2F5C40B900CD723C /* PBXTargetDependency */,
+				D7F247AA2F9D4E7400C6BE24 /* PBXTargetDependency */,
 			);
 			name = YaNVi;
 			productName = YaNVi;
@@ -215,6 +273,9 @@
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					D740A30D2F5C40B900CD723C = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					D7F2479F2F9D4E7400C6BE24 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 					D7FF79042F5B004D00BA6F5A = {
@@ -239,6 +300,7 @@
 			targets = (
 				D7FF79042F5B004D00BA6F5A /* YaNVi */,
 				D740A30D2F5C40B900CD723C /* YaNViQuickLook */,
+				D7F2479F2F9D4E7400C6BE24 /* YaNViThumbnails */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +312,14 @@
 			files = (
 				D740A32A2F5C4ABB00CD723C /* PreviewViewController.xib in Resources */,
 				D740A32C2F5C584B00CD723C /* MorePerfectDOSVGA.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7F2479E2F9D4E7400C6BE24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7F247AF2F9D50CF00C6BE24 /* MorePerfectDOSVGA.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +350,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7F2479C2F9D4E7400C6BE24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7F247A62F9D4E7400C6BE24 /* ThumbnailProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7FF79012F5B004D00BA6F5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -296,6 +374,11 @@
 			isa = PBXTargetDependency;
 			target = D740A30D2F5C40B900CD723C /* YaNViQuickLook */;
 			targetProxy = D740A31C2F5C40B900CD723C /* PBXContainerItemProxy */;
+		};
+		D7F247AA2F9D4E7400C6BE24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7F2479F2F9D4E7400C6BE24 /* YaNViThumbnails */;
+			targetProxy = D7F247A92F9D4E7400C6BE24 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -412,6 +495,58 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YaNVi.YaNViQuickLook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D7F247AD2F9D4E7400C6BE24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = YaNViThumbnails/YaNViThumbnails.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YaNViThumbnails/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YaNViThumbnails;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "$(COPYRIGHT)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YaNVi.YaNViThumbnails;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D7F247AE2F9D4E7400C6BE24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = YaNViThumbnails/YaNViThumbnails.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YaNViThumbnails/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YaNViThumbnails;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "$(COPYRIGHT)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mackonsti.YaNVi.YaNViThumbnails;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -618,6 +753,15 @@
 			buildConfigurations = (
 				D740A3202F5C40B900CD723C /* Debug */,
 				D740A3212F5C40B900CD723C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7F247AC2F9D4E7400C6BE24 /* Build configuration list for PBXNativeTarget "YaNViThumbnails" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7F247AD2F9D4E7400C6BE24 /* Debug */,
+				D7F247AE2F9D4E7400C6BE24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

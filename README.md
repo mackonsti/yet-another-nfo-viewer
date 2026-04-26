@@ -52,7 +52,7 @@ You can find more information on `xattr` command [here](https://ss64.com/osx/xat
 
 # Releases
 
-### Release 1.3.0 and 1.3.1
+### Release 1.3.0 to 1.3.2
 
 This release has been tested for a few days and works very well, so it's ready to be shared with the community, as this really **completes** the purpose of this tool. Main features include crash guards added to the main application as well as the Quicklook plugin; Printing support for both paper-printing and PDF exports; improved render calculation and window resizing (in both application and Quicklook plugin).
 

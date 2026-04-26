@@ -10,11 +10,13 @@
 			<array>
 				<string>com.mackonsti.scene.document</string>
 			</array>
+			<key>QLThumbnailMinimumDimension</key>
+			<integer>64</integer>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.quicklook.preview</string>
+		<string>com.apple.quicklook.thumbnail</string>
 		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).PreviewViewController</string>
+		<string>$(PRODUCT_MODULE_NAME).ThumbnailProvider</string>
 	</dict>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
