@@ -56,6 +56,10 @@ You can find more information on `xattr` command [here](https://ss64.com/osx/xat
 
 This release has been tested for a few days and works very well, so it's ready to be shared with the community, as this really **completes** the purpose of this tool. Main features include crash guards added to the main application as well as the Quicklook plugin; Printing support for both paper-printing and PDF exports; improved render calculation and window resizing (in both application and Quicklook plugin).
 
+![Notification](Other/Notification.png)
+
+With the installation of this updated version and first run, macOS should prompt you that a Quick Look Previewer Extension has been added, signalling that you are ready to preview files without opening them: just by moving your Finder focus on NFO, DIZ and ASC files and pressing "space" on your keyboard.
+
 ### Release 1.2.0
 
 This release represents the revamping of the application, having converted it to Swift 5.x with the help of AI tools after hours of checking, testing, deliberating and optimising. Still comes as a Universal Binary and with a number of small under-the-hood improvements. For the time being, the minimum OS requirement is 14.5 macOS Sonoma.
