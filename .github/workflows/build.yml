@@ -34,7 +34,7 @@ jobs:
           ONLY_ACTIVE_ARCH=NO \
           clean build
 
-    - name: Verify universal binary
+    - name: Verify Universal binary
       run: |
         BIN="build/Build/Products/Release/YaNVi.app/Contents/MacOS/YaNVi"
         echo "Main binary info:"
@@ -50,7 +50,7 @@ jobs:
     - name: Verify QuickLook extension
       run: |
         QL_BIN="build/Build/Products/Release/YaNVi.app/Contents/PlugIns/YaNViQuickLook.appex/Contents/MacOS/YaNViQuickLook"
-        echo "PlugIn binary info:"
+        echo "QuickLook binary info:"
         ARCHS=$(lipo -info "$QL_BIN")
         echo "$ARCHS"
         if [[ "$ARCHS" != *"x86_64"* ]] || [[ "$ARCHS" != *"arm64"* ]]; then
@@ -59,6 +59,19 @@ jobs:
         fi
         echo "QuickLook Mach-O details verified:"
         file "$QL_BIN"
+
+    - name: Verify Thumbnails extension
+      run: |
+        TH_BIN="build/Build/Products/Release/YaNVi.app/Contents/PlugIns/YaNViThumbnails.appex/Contents/MacOS/YaNViThumbnails"
+        echo -e "Thumbnails binary info:"
+        ARCHS=$(lipo -info "$TH_BIN")
+        echo "$ARCHS"
+        if [[ "$ARCHS" != *"x86_64"* ]] || [[ "$ARCHS" != *"arm64"* ]]; then
+          echo "ERROR: PlugIn binary is not universal (x86_64 + arm64 required)"
+          exit 1
+        fi
+        echo "Thumbnails Mach-O details verified:"
+        file "$TH_BIN"
 
     - name: Prepare artifacts
       run: |
