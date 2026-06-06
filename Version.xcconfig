@@ -8,6 +8,6 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-MARKETING_VERSION = 1.4.0
-CURRENT_PROJECT_VERSION = 1.4.0
+MARKETING_VERSION = 1.4.1
+CURRENT_PROJECT_VERSION = 1.4.1
 COPYRIGHT = Copyright ©2012-2026 MacKonsti. All rights reserved.

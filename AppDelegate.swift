@@ -82,8 +82,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // Set the bundled font (without the .ttf extension)
-    let nfoFontName = "MorePerfectDOSVGA"
-    let nfoFontSize: CGFloat = 16
+    // let nfoFontName = "MorePerfectDOSVGA"
+    // let nfoFontSize: CGFloat = 16
 
     // Track whether the app was launched by opening a file
     var hasDroppedFile = false
@@ -110,74 +110,74 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // --------------------------------------------------------------------
     // SECTION 1: - Font Registration
     // --------------------------------------------------------------------
-
-    /*
-     NFO files rely on a DOS-style fixed-width font for correct rendering
-     of ASCII / ANSI art. The fonts bundled with YaNVi are:
-
-        • MorePerfectDOSVGA
-        • ProFontWindows
-
-     Modern versions of macOS do NOT automatically register fonts that are
-     included inside the application bundle. If we do nothing, a call like:
-
-        NSFont(name:size:)
-
-     would return nil because the system does not yet know about the font.
-
-     Therefore we manually register the fonts at application startup using
-     CoreText's CTFontManagerRegisterFontsForURL().
-
-     This function:
-
-     1. Looks up each font inside the application bundle
-     2. Registers it for the current process
-     3. Prints debug information to the console
-    */
-
-    func registerFonts() {
-
-        // If font already exists in system (PostScript name) skip registration
-        if NSFont(name: nfoFontName, size: nfoFontSize) != nil {
-            print("Font already available:", nfoFontName)
-            return
-        }
-
-        // Locate the font file inside the application bundle
-        guard let fontURL = Bundle.main.url(forResource: nfoFontName, withExtension: "ttf") else {
-            print("Font not found in bundle:", nfoFontName)
-            return
-        }
-
-        var error: Unmanaged<CFError>?
-
-        // Register the font with the CoreText font manager
-        if CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, &error) {
-            print("Registered font:", nfoFontName)
-        } else {
-            print("Font registration failed:", error?.takeRetainedValue().localizedDescription ?? "unknown")
-        }
-    }
+    //
+    //    /*
+    //     NFO files rely on a DOS-style fixed-width font for correct rendering
+    //     of ASCII / ANSI art. The fonts bundled with YaNVi are:
+    //
+    //        • MorePerfectDOSVGA
+    //        • ProFontWindows
+    //
+    //     Modern versions of macOS do NOT automatically register fonts that are
+    //     included inside the application bundle. If we do nothing, a call like:
+    //
+    //        NSFont(name:size:)
+    //
+    //     would return nil because the system does not yet know about the font.
+    //
+    //     Therefore we manually register the fonts at application startup using
+    //     CoreText's CTFontManagerRegisterFontsForURL().
+    //
+    //     This function:
+    //
+    //     1. Looks up each font inside the application bundle
+    //     2. Registers it for the current process
+    //     3. Prints debug information to the console
+    //    */
+    //
+    // func registerFonts() {
+    //
+    //     // If font already exists in system (PostScript name) skip registration
+    //     if NSFont(name: nfoFontName, size: nfoFontSize) != nil {
+    //         print("Font already available:", nfoFontName)
+    //         return
+    //     }
+    //
+    //     // Locate the font file inside the application bundle
+    //     guard let fontURL = Bundle.main.url(forResource: nfoFontName, withExtension: "ttf") else {
+    //         print("Font not found in bundle:", nfoFontName)
+    //         return
+    //     }
+    //
+    //     var error: Unmanaged<CFError>?
+    //
+    //     // Register the font with the CoreText font manager
+    //     if CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, &error) {
+    //         print("Registered font:", nfoFontName)
+    //     } else {
+    //         print("Font registration failed:", error?.takeRetainedValue().localizedDescription ?? "unknown")
+    //     }
+    // }
 
 
     // --------------------------------------------------------------------
     // SECTION 2: - File Encoding
     // --------------------------------------------------------------------
-
-    /*
-     NFO files are traditionally encoded using DOS Codepage 437.
-     Swift provides a built-in encoding for this: String.Encoding.dosCP437
-     */
-
-    func nfoEncoding() -> String.Encoding {
-
-        let cfEncoding = CFStringConvertWindowsCodepageToEncoding(437)
-        // Fallback encoding just in case CP437 is not detected
-        guard cfEncoding != kCFStringEncodingInvalidId else { return .isoLatin1 }
-        let nsEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding)
-
-        return String.Encoding(rawValue: nsEncoding)
-    }
+    //
+    //    /*
+    //     NFO files are traditionally encoded using DOS Codepage 437.
+    //     Swift provides a built-in encoding for this: String.Encoding.dosCP437
+    //     */
+    //
+    // func nfoEncoding() -> String.Encoding {
+    //
+    //     let cfEncoding = CFStringConvertWindowsCodepageToEncoding(437)
+    //
+    //     // Fallback encoding just in case CP437 is not detected
+    //     guard cfEncoding != kCFStringEncodingInvalidId else { return .isoLatin1 }
+    //
+    //     return String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(cfEncoding))
+    // }
 
 
     // --------------------------------------------------------------------
@@ -231,7 +231,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("Imported \(url)")
 
         // Read NFO file contents using CP437 encoding
-        guard let nfoInput = try? String(contentsOf: url, encoding: nfoEncoding()) else {
+        guard let nfoInput = try? String(contentsOf: url, encoding: SharedCode.nfoEncoding()) else {
             print("Unable to read file: ", url.lastPathComponent)
 
             // Display a native warning
@@ -246,37 +246,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        var lines = [String]()
-        var longestLine = 0
-
+        // var lines = [String]()
+        // var longestLine = 0
+        //
         // Single-pass enumeration to normalize line endings and trim spaces (no Regex overhead)
-        nfoInput.enumerateLines { line, _ in
-
-            // Natively replace all tabs with 4 spaces before trimming
-            // var trimmed = line.replacingOccurrences(of: "\t", with: "    ")[...]
-            var trimmed = line[...]
-
-            // Look at very last character and remove it if whitespace and save it back
-            while trimmed.last?.isWhitespace == true { trimmed.removeLast() }
-            lines.append(String(trimmed))
-
-            if trimmed.count > longestLine { longestLine = trimmed.count }
-        }
-
+        // nfoInput.enumerateLines { line, _ in
+        //
+        // Natively replace all tabs with 4 spaces before trimming
+        // var trimmed = line.replacingOccurrences(of: "\t", with: "    ")[...]
+        // var trimmed = line[...]
+        //
+        // Look at very last character and remove it if whitespace and save it back
+        // while trimmed.last?.isWhitespace == true { trimmed.removeLast() }
+        //     lines.append(String(trimmed))
+        //
+        //     if trimmed.count > longestLine { longestLine = trimmed.count }
+        // }
+        //
         // Remember the original number of lines before any trimming at the bottom
-        let originalLineCount = lines.count
-
+        // let originalLineCount = lines.count
+        //
         // Remove all trailing blank lines at the bottom of document except one
-        while lines.last?.isEmpty == true { lines.removeLast() }
-        lines.append("")
+        // while lines.last?.isEmpty == true { lines.removeLast() }
+        // lines.append("")
 
-        // Rejoin into a single string for the NSTextView coming next
-        let nfoContents = lines.joined(separator: "\n")
-        let finalLineCount = lines.count
+        // Parse, trim and re-join into a single string for the NSTextView coming next
+        let parsed = SharedCode.nfoTrimming(text: nfoInput)
+        let nfoContents = parsed.lines.joined(separator: "\n")
+
+        let originalLineCount = parsed.originalLineCount
+        let finalLineCount = parsed.lines.count
+        let longestLine = parsed.maxLineLength
+
         print("NFO count: \(originalLineCount) lines became \(finalLineCount) @ maximum \(longestLine) chars")
 
         // Safely load the DOS font to avoid crashes
-        guard let nfoFont = NSFont(name: nfoFontName, size: nfoFontSize) else {
+        guard let nfoFont = NSFont(name: SharedCode.nfoFontName, size: SharedCode.nfoFontSize) else {
             showFatalError(
                 "Required DOS font could not be loaded.",
                 info: "YaNVi requires the bundled DOS font to display NFO files correctly."
@@ -409,7 +414,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if textHeight > visibleScreen.height - verticalWindowPadding {
             let scrollbarWidth = NSScroller.scrollerWidth(
                 for: .regular,
-                scrollerStyle: .legacy
+            //  scrollerStyle: .legacy
+                scrollerStyle: NSScroller.preferredScrollerStyle
             )
             windowWidth += scrollbarWidth + 2
         }
@@ -448,7 +454,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillFinishLaunching(_ notification: Notification) {
         print("Application will finish launching")
         hasDroppedFile = false
-        registerFonts()
+        SharedCode.registerFonts()
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -481,6 +487,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // Add file to "Open Recent"
             NSDocumentController.shared.noteNewRecentDocumentURL(url)
         }
+    }
+
+    // Opt-in to secure state restoration to silence macOS warnings
+    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
+        return true
     }
 
     // Quit application after window closes or if fatal error occurs

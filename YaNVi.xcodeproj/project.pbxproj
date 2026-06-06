@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D73E2D712FD32745000CD24F /* SharedCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E2D702FD32745000CD24F /* SharedCode.swift */; };
+		D73E2D722FD32745000CD24F /* SharedCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E2D702FD32745000CD24F /* SharedCode.swift */; };
+		D73E2D732FD32745000CD24F /* SharedCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E2D702FD32745000CD24F /* SharedCode.swift */; };
 		D740A3142F5C40B900CD723C /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740A3132F5C40B900CD723C /* PreviewViewController.swift */; };
 		D740A31E2F5C40B900CD723C /* YaNViQuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D740A30E2F5C40B900CD723C /* YaNViQuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D740A32A2F5C4ABB00CD723C /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D740A3172F5C40B900CD723C /* PreviewViewController.xib */; };
@@ -73,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D73E2D702FD32745000CD24F /* SharedCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCode.swift; sourceTree = "<group>"; };
 		D740A30E2F5C40B900CD723C /* YaNViQuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = YaNViQuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D740A3102F5C40B900CD723C /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		D740A3132F5C40B900CD723C /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +85,7 @@
 		D74E55AF2F9AC1EE003AEED3 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		D76888EA2F60AAE6008F5022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
 		D7D4418E2F5B5803009A9D4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		D7D441962F5B5A4B009A9D4A /* EscapeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EscapeWindow.swift; sourceTree = SOURCE_ROOT; };
+		D7D441962F5B5A4B009A9D4A /* EscapeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscapeWindow.swift; sourceTree = SOURCE_ROOT; };
 		D7D441A82F5B8EA0009A9D4A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = InfoPlist.strings; sourceTree = "<group>"; };
 		D7D441AA2F5B8EA0009A9D4A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
 		D7D441AD2F5B8EA0009A9D4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -94,7 +98,7 @@
 		D7FF79052F5B004D00BA6F5A /* YaNVi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YaNVi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7FF793B2F5B462C00BA6F5A /* NFO Document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "NFO Document.icns"; sourceTree = SOURCE_ROOT; };
 		D7FF793C2F5B462C00BA6F5A /* NFO Viewer.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "NFO Viewer.icns"; sourceTree = SOURCE_ROOT; };
-		D7FF79402F5B465300BA6F5A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		D7FF79402F5B465300BA6F5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		D7FF79672F5B505900BA6F5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/MorePerfectDOSVGA.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +186,7 @@
 				D7D441AC2F5B8EA0009A9D4A /* fr.lproj */,
 				D7FF79402F5B465300BA6F5A /* AppDelegate.swift */,
 				D7D441962F5B5A4B009A9D4A /* EscapeWindow.swift */,
+				D73E2D702FD32745000CD24F /* SharedCode.swift */,
 				D7D4418F2F5B5803009A9D4A /* MainMenu.xib */,
 				D7FF793B2F5B462C00BA6F5A /* NFO Document.icns */,
 				D7FF793C2F5B462C00BA6F5A /* NFO Viewer.icns */,
@@ -346,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D73E2D722FD32745000CD24F /* SharedCode.swift in Sources */,
 				D740A3142F5C40B900CD723C /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D73E2D732FD32745000CD24F /* SharedCode.swift in Sources */,
 				D7F247A62F9D4E7400C6BE24 /* ThumbnailProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D73E2D712FD32745000CD24F /* SharedCode.swift in Sources */,
 				D7D441972F5B5A4B009A9D4A /* EscapeWindow.swift in Sources */,
 				D7FF79412F5B465300BA6F5A /* AppDelegate.swift in Sources */,
 			);

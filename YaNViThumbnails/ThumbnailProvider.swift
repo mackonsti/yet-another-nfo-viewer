@@ -12,44 +12,50 @@ import CoreText
 class ThumbnailProvider: QLThumbnailProvider {
 
     // Made static so it can be shared by both the static registration block and instance methods
-    static let nfoFontName = "MorePerfectDOSVGA"
-    static let nfoFontSize: CGFloat = 16
+    // static let nfoFontName = "MorePerfectDOSVGA"
+    // static let nfoFontSize: CGFloat = 16
 
 
     // Using a static constant guarantees thread-safe, one-time font registration per process
-    static let isFontRegistered: Bool = {
+    // static let isFontRegistered: Bool = {
+    //
+    //     // If requested font (PostScript name) is the one returned by the system then exit registration
+    //     let nfoFont = CTFontCreateWithName(nfoFontName as CFString, nfoFontSize, nil)
+    //     if (CTFontCopyPostScriptName(nfoFont) as String) == nfoFontName { return true }
+    //
+    //     // Locate the TTF file inside the extension bundle itself
+    //     let bundle = Bundle(for: ThumbnailProvider.self)
+    //     guard let fontURL = bundle.url(forResource: nfoFontName, withExtension: "ttf") else { return false }
+    //
+    //     // Register the font with the CoreText font manager
+    //     CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, nil)
+    //
+    //     // Verify that registration succeeded
+    //     let verifyFont = CTFontCreateWithName(nfoFontName as CFString, nfoFontSize, nil)
+    //     return (CTFontCopyPostScriptName(verifyFont) as String) == nfoFontName
+    // }()
 
-        // If requested font (PostScript name) is the one returned by the system then exit registration
-        let nfoFont = CTFontCreateWithName(nfoFontName as CFString, nfoFontSize, nil)
-        if (CTFontCopyPostScriptName(nfoFont) as String) == nfoFontName { return true }
 
-        // Locate the TTF file inside the extension bundle itself
-        let bundle = Bundle(for: ThumbnailProvider.self)
-        guard let fontURL = bundle.url(forResource: nfoFontName, withExtension: "ttf") else { return false }
-
-        // Register the font with the CoreText font manager
-        CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, nil)
-
-        // Verify that registration succeeded
-        let verifyFont = CTFontCreateWithName(nfoFontName as CFString, nfoFontSize, nil)
-        return (CTFontCopyPostScriptName(verifyFont) as String) == nfoFontName
-    }()
-
-
-    func nfoEncoding() -> String.Encoding {
-        let cfEncoding = CFStringConvertWindowsCodepageToEncoding(437)
-
-        // Use fallback encoding just in case DOS437 is not detected
-        guard cfEncoding != kCFStringEncodingInvalidId else { return .isoLatin1 }
-
-        return String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(cfEncoding))
-    }
+    // func nfoEncoding() -> String.Encoding {
+    //     let cfEncoding = CFStringConvertWindowsCodepageToEncoding(437)
+    //
+    //     // Use fallback encoding just in case DOS437 is not detected
+    //     guard cfEncoding != kCFStringEncodingInvalidId else { return .isoLatin1 }
+    //
+    //     return String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(cfEncoding))
+    // }
 
 
     override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
 
+        // Register bundled font using shared code
+        SharedCode.registerFonts()
+
         // First, register bundled font otherwise quit thumbnail renderer
-        if !Self.isFontRegistered {
+        // if !Self.isFontRegistered {
+
+        // Check if the font actually loaded, otherwise quit thumbnail renderer
+        if NSFont(name: SharedCode.nfoFontName, size: SharedCode.nfoFontSize) == nil {
             handler(nil, nil)
             return
         }
@@ -90,10 +96,19 @@ class ThumbnailProvider: QLThumbnailProvider {
             let insetY = size.height * 0.005
             let drawRect = CGRect(x: insetX, y: insetY, width: size.width * 0.99, height: size.height * 0.99)
 
+            // Check NFO file size first (Limit set to 2 MB to avoid crashes)
+            if let attributes = try? FileManager.default.attributesOfItem(atPath: request.fileURL.path),
+               let fileSize = attributes[.size] as? UInt64 {
+                if fileSize > 2_097_152 {
+                    // Exit process and quit thumbnail renderer
+                    return false
+                }
+            }
+
             // Read NFO file contents using CP437 encoding
             let text: String
             do {
-                text = try String(contentsOf: request.fileURL, encoding: self.nfoEncoding())
+                text = try String(contentsOf: request.fileURL, encoding: SharedCode.nfoEncoding())
             } catch {
                 return false  // Return false so QuickLook falls back to the default file icon
             }
@@ -127,7 +142,7 @@ class ThumbnailProvider: QLThumbnailProvider {
             let maxChars = maxLineLength
 
             // Provide font name and size to draw sample
-            let baseFont = CTFontCreateWithName(Self.nfoFontName as CFString, Self.nfoFontSize, nil)
+            let baseFont = CTFontCreateWithName(SharedCode.nfoFontName as CFString, SharedCode.nfoFontSize, nil)
 
             // Measure one character width (M or W)
             let sample = NSAttributedString(string: "M", attributes: [.font: baseFont])
@@ -136,8 +151,8 @@ class ThumbnailProvider: QLThumbnailProvider {
 
             // Scale font so the full width is used
             let scale = drawRect.width / (CGFloat(maxChars) * charWidth)
-            let finalFontSize = Self.nfoFontSize * scale
-            let ctFont = CTFontCreateWithName(Self.nfoFontName as CFString, finalFontSize, nil)
+            let finalFontSize = SharedCode.nfoFontSize * scale
+            let ctFont = CTFontCreateWithName(SharedCode.nfoFontName as CFString, finalFontSize, nil)
 
             // Compute line height (tight, no leading)
             let ascent = CTFontGetAscent(ctFont)
