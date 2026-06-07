@@ -14,7 +14,6 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     @IBOutlet var textView: NSTextView!
 
     // Bundled font defined in SharedCode.swift
-    let nfoMargin: CGFloat = 20
 
     override var acceptsFirstResponder: Bool {
         return false
@@ -125,12 +124,12 @@ class PreviewViewController: NSViewController, QLPreviewingController {
             // Disable wrapping
             textView.textContainer?.containerSize = NSSize(
                 width: textWidth,
-                height: textHeight + nfoMargin
+                height: textHeight + SharedCode.nfoMargin
             )
 
             // Request QuickLook panel size
             self.preferredContentSize = NSSize(
-                width: textWidth + nfoMargin,
+                width: textWidth + SharedCode.nfoMargin,
                 height: textHeight
             )
 

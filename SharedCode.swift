@@ -8,8 +8,9 @@
 import Cocoa
 
 struct SharedCode {
-    static let nfoFontName = "MorePerfectDOSVGA"
+    static let nfoFontName: String = "MorePerfectDOSVGA"
     static let nfoFontSize: CGFloat = 16
+    static let nfoMargin: CGFloat = 20
 
     // --------------------------------------------------------------------
     // FUNCTION 1: - Font Registration

@@ -271,6 +271,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         nfoTextView.textContainer?.lineFragmentPadding = 0
         nfoTextView.textContainerInset = .zero
 
+        nfoTextView.drawsBackground = true
         nfoTextView.backgroundColor = .white
         nfoTextView.textColor = .black
 
@@ -336,7 +337,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             //  scrollerStyle: .legacy
                 scrollerStyle: NSScroller.preferredScrollerStyle
             )
-            windowWidth += scrollbarWidth + 2
+            windowWidth += scrollbarWidth
         }
 
         // Screen limits scenarios
