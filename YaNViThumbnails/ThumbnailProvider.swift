@@ -11,48 +11,12 @@ import CoreText
 
 class ThumbnailProvider: QLThumbnailProvider {
 
-    // Made static so it can be shared by both the static registration block and instance methods
-    // static let nfoFontName = "MorePerfectDOSVGA"
-    // static let nfoFontSize: CGFloat = 16
-
-
-    // Using a static constant guarantees thread-safe, one-time font registration per process
-    // static let isFontRegistered: Bool = {
-    //
-    //     // If requested font (PostScript name) is the one returned by the system then exit registration
-    //     let nfoFont = CTFontCreateWithName(nfoFontName as CFString, nfoFontSize, nil)
-    //     if (CTFontCopyPostScriptName(nfoFont) as String) == nfoFontName { return true }
-    //
-    //     // Locate the TTF file inside the extension bundle itself
-    //     let bundle = Bundle(for: ThumbnailProvider.self)
-    //     guard let fontURL = bundle.url(forResource: nfoFontName, withExtension: "ttf") else { return false }
-    //
-    //     // Register the font with the CoreText font manager
-    //     CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, nil)
-    //
-    //     // Verify that registration succeeded
-    //     let verifyFont = CTFontCreateWithName(nfoFontName as CFString, nfoFontSize, nil)
-    //     return (CTFontCopyPostScriptName(verifyFont) as String) == nfoFontName
-    // }()
-
-
-    // func nfoEncoding() -> String.Encoding {
-    //     let cfEncoding = CFStringConvertWindowsCodepageToEncoding(437)
-    //
-    //     // Use fallback encoding just in case DOS437 is not detected
-    //     guard cfEncoding != kCFStringEncodingInvalidId else { return .isoLatin1 }
-    //
-    //     return String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(cfEncoding))
-    // }
-
+    // Bundled font defined in SharedCode.swift
 
     override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
 
         // Register bundled font using shared code
         SharedCode.registerFonts()
-
-        // First, register bundled font otherwise quit thumbnail renderer
-        // if !Self.isFontRegistered {
 
         // Check if the font actually loaded, otherwise quit thumbnail renderer
         if NSFont(name: SharedCode.nfoFontName, size: SharedCode.nfoFontSize) == nil {
