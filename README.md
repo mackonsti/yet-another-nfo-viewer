@@ -64,8 +64,6 @@ As always, do not forget to enable both plugins now in System Settings → Priva
 
 ![Privacy](Other/Privacy.png)
 
-, as this really **completes** the purpose of this tool
-
 ### Release 1.3.0 to 1.3.2
 
 This release has been tested for a few days and works very well, so it's ready to be shared with the community. Main features include crash guards added to the main application as well as the Quicklook plugin; Printing support for both paper-printing and PDF exports; improved render calculation and window resizing (in both application and Quicklook plugin).
