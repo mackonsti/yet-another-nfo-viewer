@@ -52,21 +52,23 @@ You can find more information on `xattr` command [here](https://ss64.com/osx/xat
 
 # Releases
 
-### Release 1.4.0 to 1.4.1
+### Release 1.4.0 to 1.4.2
 
-As a bonus feature, I decided to invest some time to understand how Finder icon rendering works and how to make these great NFO files appear as nicer icons instead of the generic one created long time ago. The mechanism was introduced and tested, thus NFO, DIZ, ASC icons now have the preview generated from 64x64px sizes and above. Some further code refinements were introduced, making the application robust and time-lasting.
+As a bonus feature, I decided to invest some time to understand how Finder icon rendering works and how to make these great NFO files appear as content-based icons instead of the generic one created long time ago. The mechanism was introduced and tested, thus NFO, DIZ, ASC icons now have the preview generated from 64x64px sizes and above. Some further code refinements were introduced, making the application robust and time-lasting.
 
 Another great piece of news is that, following analysis by Google's Antigravity, the code was given the "go ahead" to lower the minimum macOS version to 11.x (Big Sur)!
 
-One issue discovered was that, despite using the same display calculation mechanism for both the main application window and Quick Look, this results to some cropping after a certain number of lines; not sure if this is a macOS limitation, this is a small puzzle to solve so I will update the application once results on those longer NFO files are fully satisfactory.
+One issue discovered while testing custom-made (very) long NFOs, was that there was some line-cropping occurring in both Quick Look and main application windows despite using the same text-frame calculation mechanism. After some research, the maximum allowed content was increased to 2 000 lines inside the UI definition of each window.
 
 As always, do not forget to enable both plugins now in System Settings → Privacy → Extensions → Quick Look after a first run of the newer version:
 
 ![Privacy](Other/Privacy.png)
 
+![Extensions](Other/Extensions.png)
+
 ### Release 1.3.0 to 1.3.2
 
-This release has been tested for a few days and works very well, so it's ready to be shared with the community. Main features include crash guards added to the main application as well as the Quicklook plugin; Printing support for both paper-printing and PDF exports; improved render calculation and window resizing (in both application and Quicklook plugin).
+This release has been tested for a few days and works very well, so it's ready to be shared with the community. Main features include crash guards added to the main application as well as the Quick Look plugin; Printing support for both paper-printing and PDF exports; improved render calculation and window resizing (in both application and Quicklook plugin).
 
 ![Notification](Other/Notification.png)
 
