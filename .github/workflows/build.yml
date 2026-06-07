@@ -41,7 +41,7 @@ jobs:
         ARCHS=$(lipo -info "$BIN")
         echo "$ARCHS"
         if [[ "$ARCHS" != *"x86_64"* ]] || [[ "$ARCHS" != *"arm64"* ]]; then
-            echo "ERROR: Main binary is not universal (x86_64 + arm64 required)"
+            echo "ERROR: Application binary is not universal (x86_64 + arm64 required)"
             exit 1
         fi
         echo "Application Mach-O details verified:"
@@ -54,7 +54,7 @@ jobs:
         ARCHS=$(lipo -info "$QL_BIN")
         echo "$ARCHS"
         if [[ "$ARCHS" != *"x86_64"* ]] || [[ "$ARCHS" != *"arm64"* ]]; then
-            echo "ERROR: PlugIn binary is not universal (x86_64 + arm64 required)"
+            echo "ERROR: QuickLook binary is not universal (x86_64 + arm64 required)"
             exit 1
         fi
         echo "QuickLook Mach-O details verified:"
@@ -67,7 +67,7 @@ jobs:
         ARCHS=$(lipo -info "$TH_BIN")
         echo "$ARCHS"
         if [[ "$ARCHS" != *"x86_64"* ]] || [[ "$ARCHS" != *"arm64"* ]]; then
-          echo "ERROR: PlugIn binary is not universal (x86_64 + arm64 required)"
+          echo "ERROR: Thumbnails binary is not universal (x86_64 + arm64 required)"
           exit 1
         fi
         echo "Thumbnails Mach-O details verified:"
