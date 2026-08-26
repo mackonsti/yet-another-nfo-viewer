@@ -1,10 +1,14 @@
 # Yet Another NFO Viewer (YaNVi)
 
-${\textsf{\color{red}Work here resumes after spending some time with AI tools converting old code.}}$
+[![Build](https://img.shields.io/github/actions/workflow/status/mackonsti/yet-another-nfo-viewer/build.yml?branch=main&label=Build)](https://github.com/mackonsti/yet-another-nfo-viewer/actions/workflows/build.yml)
+[![Latest Release](https://img.shields.io/github/v/release/mackonsti/yet-another-nfo-viewer?label=Latest%20Release)](https://github.com/mackonsti/yet-another-nfo-viewer/releases/latest)
+[![License](https://img.shields.io/github/license/mackonsti/yet-another-nfo-viewer?label=License)](https://github.com/mackonsti/yet-another-nfo-viewer/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/github/downloads/mackonsti/yet-another-nfo-viewer/latest/total?label=Downloads)](https://github.com/mackonsti/yet-another-nfo-viewer/releases)
+[![Last Commit](https://img.shields.io/github/last-commit/mackonsti/yet-another-nfo-viewer?label=Last%20Commit)](https://github.com/mackonsti/yet-another-nfo-viewer/commits/main)
+[![Stars](https://img.shields.io/github/stars/mackonsti/yet-another-nfo-viewer?label=Stars)](https://github.com/mackonsti/yet-another-nfo-viewer/stargazers)
 
-${\textsf{\color{red}The project is not fully active but is being kept alive with slow changes.}}$
-
-${\textsf{\color{red}Please be patient, as this is a hobby project and my free time is scarce.}}$
+${\textsf{\color{red}Work resumed after spending some time with AI tools converting and refactoring original code.}}$
+${\textsf{\color{red}The tool is active and kept alive with slow changes, please be patient as it's a hobby project.}}$
 
 ## 1. History
 
@@ -68,7 +72,7 @@ As always, do not forget to enable both plugins now in System Settings → Priva
 
 ### Release 1.3.0 to 1.3.2
 
-This release has been tested for a few days and works very well, so it's ready to be shared with the community. Main features include crash guards added to the main application as well as the Quick Look plugin; Printing support for both paper-printing and PDF exports; improved render calculation and window resizing (in both application and Quicklook plugin).
+This release has been tested for a few days and works very well, so it's ready to be shared with the community. Main features include crash guards added to the main application as well as the Quick Look plugin; Printing support for both paper-printing and PDF exports; improved render calculation and window resizing (in both application and Quick Look plugin).
 
 ![Notification](Other/Notification.png)
 
